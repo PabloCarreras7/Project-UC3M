@@ -1,0 +1,21 @@
+hospital_id,nombre,nombre_corto,distrito,tipo,camas,urgencias_24h,helipad
+1,Hospital Universitario La Paz,LA PAZ,FUENCARRAL-EL PARDO,Público,1328.0,1,1
+2,Hospital General Universitario Gregorio Marañón,GREGORIO MARAÑON,RETIRO,Público,1500.0,1,0
+3,Hospital Clínico San Carlos,clinico san carlos,MONCLOA-ARAVACA,PRIVADO,961.0,1,0
+4,Hospital Universitario 12 de Octubre,12 de Octubre,USERA,Público,1256.0,1,1
+5,Hospital Universitario Ramón y Cajal,Ramón y Cajal,HORTALEZA,publico,1092.0,1,1
+6,Hospital Universitario La Princesa,La Princesa,SALAMANCA,publico,480.0,1,0
+7,Hospital Universitario Puerta de Hierro,Puerta de Hierro,MONCLOA-ARAVACA,Público,613.0,1,1
+8,Hospital Universitario Fundación Jiménez Díaz,Fundación Jiménez Díaz,ARGANZUELA,privado-concertado,,1,0
+9,Hospital Universitario de Getafe,H. Getafe,GETAFE,Público,560.0,1,1
+10,Hospital Universitario Severo Ochoa,Severo Ochoa,LEGANES,privado-concertado,425.0,1,0
+11,Hospital Universitario Príncipe de Asturias,Príncipe de Asturias,ALCALA DE HENARES,privado-concertado,,1,0
+12,Hospital Universitario de Móstoles,H. Móstoles,MOSTOLES,PUBLICO,,1,0
+13,Hospital Universitario Infanta Leonor,Infanta Leonor,VALLECAS,Público,260.0,1,0
+14,Hospital Universitario del Henares,H. del Henares,COSLADA,Público,310.0,1,0
+15,Hospital Universitario Infanta Sofía,Infanta Sofía,SAN SEBASTIAN DE LOS REYES,publico,283.0,1,1
+16,Hospital Universitario Rey Juan Carlos,Rey Juan Carlos,MOSTOLES,Público,-50.0,1,0
+17,Hospital Universitario Infanta Cristina,Infanta Cristina,PARLA,Público,213.0,1,0
+18,Hospital Central de la Defensa Gómez Ulla,Gómez Ulla,CARABANCHEL,Público,500.0,1,1
+19,Hospital Beata María Ana,Beata María Ana,CHAMARTIN,Privado,150.0,0,0
+20,Fundación Hospital de Alcorcón,H. Alcorcón,ALCORCON,Público,-50.0,1,0

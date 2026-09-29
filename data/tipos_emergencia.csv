@@ -1,0 +1,34 @@
+tipo_id,codigo,categoria,requiere_medico,tiempo_respuesta_objetivo_min,prioridad_base
+1,Intoxicación etílica,Psiquiátrica,0,17,ALTA
+2,Agresión sin especificar,Médica,False,16,alta
+3,Apertura de puerta,Trauma,True,15,media
+4,Patología cardiovascular,Intoxicación,1,14,media
+5,Heridas,Psiquiátrica,1,13,ALTA
+6,Patología anafiláctica,Intoxicación,Si,8,Media
+7,Convulsión y/o epilepsia,Intoxicación,1,18,baja
+8,Patología respiratoria,Intoxicación,1,6,alta
+9,Incendio,Intoxicación,0,12,Alta
+10,Certificación psiquiátrico,Otros,1,6,ALTA
+11,"Casual: caída, etc",Psiquiátrica,False,17,Media
+12,Accidente menos de 3 victimas,Intoxicación,False,8,media
+13,Otros,Médica,True,12,media
+14,Orden medica,Trauma,1,13,Alta
+15,Patología psicosomática,Otros,False,13,baja
+16,Violencia de genero,Intoxicación,False,9,baja
+17,Accidente de motocicleta,Otros,True,8,alta
+18,Agresión con spray de defensa,Psiquiátrica,No,17,baja
+19,Sobredosis,Otros,False,15,Media
+20,Diabético,Médica,1,14,media
+21,Accidente de monopatin,Médica,0,17,Media
+22,Accidente de bicicleta,Intoxicación,0,6,Alta
+23,Parada Cardiorespiratoria,Trauma,1,11,ALTA
+24,Atropello,Médica,1,12,media
+25,Agresión sexual,Intoxicación,1,15,Media
+26,Arma blanca,Psiquiátrica,Si,12,ALTA
+27,Patología digestiva,Médica,False,12,Alta
+28,Patología obstétrica,Psiquiátrica,False,18,alta
+29,Caída,Médica,No,15,ALTA
+30,Inconsciente sin filiar causa,Trauma,0,9,media
+100,INTOXICACION ETILICA,Intoxicación,Yes,10,media
+101,Herida,Trauma,No,15,baja
+102,CAIDA,Trauma,1,12,Media

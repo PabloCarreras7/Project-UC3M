@@ -1,0 +1,16 @@
+base_id,nombre,distrito,latitud,longitud,unidades_asignadas,año_apertura,tipo
+1,Base Centro,Centro,40.4168,-3.7038,6,1985.0,principal
+2,Base Latina,La Latina,40.4017,-3.7495,5,1990.0,secundaria
+3,Base Carabanchel,CARABANCHEL,40.3847,-3.7352,5,1992.0,SECUNDARIA
+4,Base Vallecas,PUENTE DE VALLECAS,40.3981,-3.6589,4,,PRINCIPAL
+5,Base Ciudad Lineal,CIUDAD LINEAL,40.4382,-3.6495,4,1998.0,satelite
+6,Base Fuencarral,FUENCARRAL-EL PARDO,40.4814,-3.7097,4,2000.0,auxiliar
+7,Base Hortaleza,HORTALEZA,-95.2,-3.6428,3,2002.0,Secundaria
+8,Base Moncloa,MONCLOA-ARAVACA,40.4353,185.0,4,1988.0,Secundaria
+9,Base Chamartín,CHAMARTIN,40.4578,-3.6773,3,1993.0,SECUNDARIA
+10,Base Tetuán,TETUAN,40.4609,-3.7044,3,1996.0,SATELITE
+11,Base Arganzuela,ARGANZUELA,40.3953,-3.6931,3,1991.0,auxiliar
+12,Base Usera,USERA,40.3842,-3.7108,2,2005.0,Secundaria
+13,Base Villaverde,VILLAVERDE,40.3467,-3.6931,2,2008.0,SECUNDARIA
+14,Base Barajas,BARAJAS,91.5,-3.5808,2,2010.0,Secundaria
+15,Base Vicálvaro,VICALVARO,40.4089,-3.6089,2,,secundaria

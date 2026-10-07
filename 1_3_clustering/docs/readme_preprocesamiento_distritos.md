@@ -1,17 +1,12 @@
 # Preprocesamiento: `distritos.csv`
 
-Documentación técnica del pipeline de limpieza, validación y consolidación de la tabla maestra de distritos de Madrid.
 
 ---
 
 ## 1. Descripción del Dataset
 
-* **Nombre del archivo:** `distritos.csv`
-* **Directorio origen:** `data/raw/`
-* **Directorio destino:** `data/clean/distritos_clean.csv`
 * **Rol en el proyecto:** **Tabla dimensional maestra (lookup table)**. Contiene los identificadores clave (`id`, `nombre`, `codigo_postal`), métricas base (`poblacion`, `superficie`) y variables dotacionales sanitarias preliminares (`num_hospitales`, `base_samur`).
 * **Estructura esperada:** 21 filas (una por distrito oficial de Madrid) y 7 columnas.
-* **Política de datos:** Inmutabilidad estricta de `data/raw/`. Toda transformación se efectúa mediante un script automatizado hacia `data/clean/`.
 
 ---
 

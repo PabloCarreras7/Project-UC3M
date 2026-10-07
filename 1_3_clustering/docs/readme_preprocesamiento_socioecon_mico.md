@@ -1,14 +1,10 @@
 # Preprocesamiento: `socioeconomico.csv`
 
-Documentación detallada del pipeline de limpieza, control de calidad y transformación del dataset socioeconómico distrital de Madrid (Caso 1.3).
 
 ---
 
 ## 1. Descripción del Dataset
 
-* **Nombre del archivo:** `socioeconomico.csv`
-* **Directorio origen:** `data/raw/`
-* **Directorio destino:** `data/clean/socioeconomico_clean.csv`
 * **Alcance:** Contiene indicadores demográficos, económicos y dotacionales de los distritos de Madrid: población, superficie, renta media, edad media, porcentaje de mayores de 65 años, porcentaje de población extranjera, tasa de paro, índice de vulnerabilidad, infraestructuras (centros de salud, colegios, comisarías, parques) y densidad.
 * **Estructura esperada:** 21 filas (una por distrito municipal oficial) y 14 variables base.
 * **Política de datos:** Inmutabilidad del dato original. El dataset en `raw/` no se modifica; todo el procesamiento se ejecuta vía script determinista y reproducible hacia `clean/`.

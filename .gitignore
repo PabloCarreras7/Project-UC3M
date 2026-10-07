@@ -147,6 +147,9 @@ activemq-data/
 # SageMath parsed files
 *.sage.py
 
+#Mac creates it by default
+.DS_Store
+
 # Environments
 .env
 .envrc

@@ -22,9 +22,9 @@ Este fichero no se sube a GitHub.
 | Caso | Responsable |
 |---|---|
 | 1.1 | Bea |
-| 1.2 | Lukas y Dani |
+| 1.2 | Lukas|
 | 1.3 | Diego |
-| 2.1 | Lukas y Dani |
+| 2.1 | Dani |
 | 2.2 | Pablo |
 
 ## Normas de trabajo

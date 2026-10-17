@@ -147,6 +147,8 @@ activemq-data/
 # SageMath parsed files
 *.sage.py
 
+node_modules/
+
 #Mac creates it by default
 .DS_Store
 

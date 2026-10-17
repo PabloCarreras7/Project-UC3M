@@ -8,3 +8,12 @@ lightgbm
 shap
 jupyter
 python-dotenv
+deepagents
+langchain
+langchain-anthropic
+langchain-huggingface
+sentence-transformers
+pinecone
+langchain-pinecone
+fastapi
+uvicorn

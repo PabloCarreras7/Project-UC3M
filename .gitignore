@@ -149,6 +149,9 @@ activemq-data/
 
 node_modules/
 
+#Mac creates it by default
+.DS_Store
+
 # Environments
 .env
 .envrc

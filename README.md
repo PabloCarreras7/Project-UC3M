@@ -21,10 +21,10 @@ Este fichero no se sube a GitHub.
 ## Reparto
 | Caso | Responsable |
 |---|---|
-| 1.1 | (completar) |
-| 1.2 | (completar) |
-| 1.3 | (completar) |
-| 2.1 | (completar) |
+| 1.1 | Bea |
+| 1.2 | Lukas|
+| 1.3 | Diego |
+| 2.1 | Dani |
 | 2.2 | Pablo |
 
 ## Normas de trabajo

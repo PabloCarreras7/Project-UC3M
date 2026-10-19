@@ -6,7 +6,7 @@ Carpeta del caso 1.3 del proyecto. El objetivo es agrupar los 21 distritos de Ma
 
 - `limpieza_socioeconomico.ipynb` -> `socioeconomico_limpio.csv` (21 filas)
 - `limpieza_distritos.ipynb` -> `distritos_limpio.csv` (21 filas)
-- `limpieza_activaciones.ipynb` -> `activaciones_limpio.csv` (152.107 filas)
+- `limpieza_activaciones.ipynb` -> `activaciones_limpio.csv` (152.107 filas, 13 columnas)
 - `cruces_datasets.ipynb` -> `tabla_distritos.csv` (21 filas, una por distrito: la tabla que entra al clustering)
 
 ## Orden de ejecución
@@ -34,7 +34,7 @@ Los notebooks leen el CSV original de la carpeta `data` del repo (o junto al not
 `socioeconomico.csv` trae los indicadores sociales de cada distrito. Traía 24 filas para 21 distritos.
 
 - Misma regla de nombres que en distritos.
-- `num_centros_salud` venía como texto: "ocho" pasa a 8 y "N/A" a vacío (no sabemos el número y no lo inventamos).
+- `num_centros_salud` venía como texto: "ocho" pasa a 8 con una regla que descompone la palabra-número y suma sus partes (decena + unidad), no con una lista cerrada de equivalencias, como pidió Bluetab. "N/A" pasa a vacío (no sabemos el número y no lo inventamos).
 - Centro, Tetuán y Salamanca salían dos veces y se juntan rellenando huecos (así Tetuán recupera el índice de vulnerabilidad, 0,55, y sus 6 centros de salud). La única contradicción es la densidad de Centro (28.626,8 frente a 28.627,0): diferencia de redondeo, nos quedamos el primer valor.
 - Valores imposibles que pasan a vacío: % de mayores de 65 negativo (Chamartín y Ciudad Lineal), paro por encima de 100 (Moncloa-Aravaca y Hortaleza), población -999 (Barajas) y vulnerabilidad 1,5 (Carabanchel, asumiendo que el índice va de 0 a 1: pendiente de confirmar). Los rangos que usamos son: porcentajes de 0 a 100, vulnerabilidad de 0 a 1, edad media de 15 a 90, y población, superficie, renta y densidad por encima de 0.
 - Los dos valores de paro por encima de 100 (118,1 y 116,3) podrían ser 11,8 y 11,6 con la coma desplazada, pero no lo podemos comprobar, así que no se corrigen y se preguntan.
@@ -42,7 +42,7 @@ Los notebooks leen el CSV original de la carpeta `data` del repo (o junto al not
 
 ## Activaciones
 
-Hemos limpiado `activaciones.csv` para que los datos tengan el mismo formato. El resultado es un CSV con **152.107 filas y las 12 columnas originales**, sin añadir columnas de control.
+Hemos limpiado `activaciones.csv` para que los datos tengan el mismo formato. El resultado es un CSV con **152.107 filas y 13 columnas**: las 12 originales más `tiempo_respuesta_min` (minutos de respuesta). Sin columnas de control.
 
 - **Meses:** nombres en inglés, abreviaturas y números pasan a nombres de mes en español y mayúsculas, para que un mismo mes no aparezca como varias categorías.
 - **Horas:** `hora_solicitud` y `hora_intervencion` unificadas a `HH:MM:SS`. Las horas que no constan se mantienen vacías, porque no podemos saber cuál era su valor.
@@ -53,6 +53,7 @@ Hemos limpiado `activaciones.csv` para que los datos tengan el mismo formato. El
 - **Hospital 12 de Octubre:** nombre unificado como `HOSPITAL 12 DE OCTUBRE` para no mantener varias formas del mismo hospital.
 - **Vallecas:** `VALLECAS PTE.`, `P. VALLECAS` y `PUENTE DE VALLECAS` se agrupan como Puente de Vallecas; `VILLA DE VALLECAS` se mantiene aparte. Bluetab confirmó por correo (14/10) que esas variantes son Puente y que el único valor ambiguo es `VALLECAS` a secas (39 filas), que podíamos excluir del análisis por distrito o asignar al distrito más frecuente, documentándolo. En la reunión del 15/10 comentaron que quizá se podía resolver con otros datasets. Lo probamos (ver abajo) y no se puede, así que esas 39 filas pasan a `NO CONSTA`.
 - **Duplicados:** 737 copias idénticas eliminadas (de 152.844 a 152.107 filas). Si un `activacion_id` se repite con datos distintos, conservamos las filas porque no sabemos cuál es la correcta.
+- **Cruces de medianoche:** 610 filas traían la intervención antes que la solicitud (616 antes de quitar duplicados, el número que también tenía Bluetab). Siguiendo su correo (14/10): asumimos que solicitud e intervención son del mismo día salvo cruce de medianoche, y nuestra regla es solicitud entre las 20:00 y las 23:59 e intervención entre las 00:00 y las 06:59, que suma 24 horas (569 filas). Las 41 que no encajan son errores de registro: el tiempo de respuesta queda vacío pero la activación se conserva. Los límites salen de los propios datos: el 92% de esas filas pide a las 23 horas y el 95% interviene a las 00, y con esos límites todas las duraciones resultantes son posibles según los tiempos del mismo día (la mayor es de unas 5 horas; los tiempos del mismo día llegan a 11). El detalle está en `limpieza_activaciones.ipynb`.
 - **Registros fuera de los distritos de Madrid:** se mantienen en esta limpieza. El filtro territorial se hace al preparar los datos para el clustering (en `cruces_datasets.ipynb`).
 
 ### Vallecas a secas: qué probamos y por qué lo dejamos en NO CONSTA
@@ -69,7 +70,7 @@ El detalle con los números está en `limpieza_activaciones.ipynb` (sección "Va
 `cruces_datasets.ipynb` revisa qué datasets se pueden cruzar y monta `tabla_distritos.csv`: una fila por distrito con perfil social, demanda y oferta sanitaria. Es la tabla que entra al clustering.
 
 - **Socioeconómico + distritos:** encajan 21 de 21 por `distrito_id`.
-- **Activaciones por distrito:** nº de activaciones, activaciones por 1.000 habitantes (para que los distritos grandes no parezcan peores solo por tener más gente), % de prioridad alta y edad media de los pacientes. Las 876 filas con distrito `NO CONSTA` y las 201 de fuera del término municipal cuentan en la demanda total, pero no se asignan a ningún distrito.
+- **Activaciones por distrito:** nº de activaciones, activaciones por 1.000 habitantes (para que los distritos grandes no parezcan peores solo por tener más gente), % de prioridad alta, edad media de los pacientes y tiempo medio de respuesta (ya con la regla de medianoche aplicada). Las 876 filas con distrito `NO CONSTA` y las 201 de fuera del término municipal cuentan en la demanda total, pero no se asignan a ningún distrito.
 - **unidades_samur: sí.** Encaja el 100% por `unidad_id` (por id, no por código, que se repite). Da la carga por unidad y las unidades de cada distrito.
 - **bases_samur y hospitales: sí.** Oferta por distrito: bases, unidades, hospitales y camas. Los catálogos escriben el distrito de otra forma (`LA LATINA`, `FUENCARRAL`, `VALLECAS`), así que se normaliza con una regla (quitar el artículo y completar si el texto es el principio de un único distrito oficial), sin diccionarios. Las unidades se buscan solo entre los distritos con base, y así `VALLECAS` encaja en Puente de Vallecas. Lo que no encaja (hospitales de otros municipios y el Hospital Infanta Leonor, cuyo distrito es solo `VALLECAS`) se lista y se deja fuera.
 - **Comprobación con `distritos.csv`:** `num_hospitales` no coincide con el catálogo de hospitales en 12 de 21 distritos, y `base_samur` no coincide con el catálogo de bases en 6 de 21. No corregimos ninguna de las dos fuentes y la tabla usa los catálogos.
@@ -79,7 +80,7 @@ El detalle con los números está en `limpieza_activaciones.ipynb` (sección "Va
 
 ## Pendiente (preguntas para Bluetab)
 
-- **Regla de medianoche:** hay 616 filas con la intervención antes que la solicitud. Bluetab indicó por correo (14/10): asumir el mismo día salvo cruce de medianoche, con una regla explícita (por ejemplo, solicitud a última hora e intervención a primera hora del día siguiente: sumar 24 h); en las filas que no encajen, dejar el tiempo de respuesta nulo sin eliminar la activación; y contar cuántas filas caen en cada caso. Según ellos, bien planteada, la gran mayoría son cruces de medianoche. Falta fijar los límites de horas de nuestra regla; después se calculará el tiempo de respuesta y se añadirá el tiempo medio por distrito a la tabla.
+- **Regla de medianoche (ya implementada):** queda validar con Bluetab los límites elegidos (solicitud 20:00-23:59 e intervención 00:00-06:59 suma 24 h; 569 cruces y 41 errores de registro con el tiempo vacío sin borrar la activación). Está justificada con los datos en `limpieza_activaciones.ipynb` y el tiempo medio por distrito ya está en `tabla_distritos.csv`; si prefieren otros límites se cambian y se recalcula.
 - **Día de la activación:** el archivo no incluye el día de solicitud ni de intervención, solo año, mes y horas. Bluetab confirmó por correo (14/10) que ese dato no existe en la fuente (el dato abierto del SAMUR solo publica año, mes y horas) y que hay que tratarlo como una limitación, así que no lo hemos inventado. Sin él no se pueden cruzar meteorología ni calendario.
 - **63 `activacion_id` repetidos con datos distintos:** conservamos las dos filas. ¿Cuál es la versión correcta?
 - **Hospital vacío** (99.787 filas, el 65%) como `NO CONSTA`: ¿vale ese criterio?
@@ -91,3 +92,4 @@ El detalle con los números está en `limpieza_activaciones.ipynb` (sección "Va
 - **Hospitales y bases:** `num_hospitales` y `base_samur` de `distritos.csv` no coinciden con los catálogos en varios distritos. ¿Cuál es la fuente buena?
 - **Hospital Infanta Leonor:** en el catálogo su distrito es `VALLECAS`. ¿Es Puente o Villa de Vallecas?
 - **Vallecas a secas (39 activaciones):** no se resuelve con otros datasets; las dejamos como `NO CONSTA` y fuera del análisis por distrito, como permitió Bluetab. ¿Os parece bien?
+

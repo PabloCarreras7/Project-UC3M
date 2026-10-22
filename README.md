@@ -5,6 +5,8 @@ Casos de uso con datos de emergencias del SAMUR de Madrid (proyecto con Bluetab)
 ## Estructura
 
 - data/            datos originales (no modificar)
+- data_clean/      datasets limpios (`<dataset>_clean.csv`)
+- cleaning/        scripts que pasan de data/ a data_clean/
 - 1_1_volume/      Predicción de volumen de emergencias
 - 1_2_severity/    Clasificación de gravedad en accidentes
 - 1_3_clustering/  Segmentación socio-sanitaria
@@ -139,3 +141,52 @@ npm run dev
 ```
 
 Claves: `ANTHROPIC_API_KEY` y `PINECONE_API_KEY`. Opcionales: `PINECONE_INDEX`, `PINECONE_CLOUD` y `PINECONE_REGION`.
+
+## Caso 2.2 — Agente de clasificación de emergencias
+
+`cleaning/limpieza_tipos_emergencia.py` lee `data/tipos_emergencia.csv` y escribe `data_clean/tipos_emergencia_clean.csv`. No modifica el original. De 33 filas salen 42 tipos.
+
+### Decisiones de limpieza
+
+**Duplicados.** Los ids 100, 101 y 102 repiten los ids 1, 5 y 29 con otra grafía. Se fusionan, como indicó Bluetab, y salen del dataset limpio.
+
+**Se dejan como vienen.** Las 6 columnas originales (`tipo_id`, `codigo`, `categoria`, `requiere_medico`, `tiempo_respuesta_objetivo_min` y `prioridad_base`), aunque traigan grafías mezcladas (`ALTA`, `Si`, `0`) o categorías incoherentes. Las versiones corregidas van en columnas nuevas.
+
+**Columnas nuevas**
+
+- `categoria_correcta`: Médica, Trauma, Psiquiátrica, Intoxicación, Violencia/Social u Otros. Las categorías originales no tenían relación con el tipo (accidente de bicicleta → Intoxicación) y se reasignan todas por criterio clínico. Violencia/Social es nueva.
+- `requiere_medico_correcto`: True si el cuadro puede necesitar valoración o intervención médica. False si lo habitual es soporte básico o no hay componente clínico urgente.
+- `prioridad_base_correcta`: `alta`, `media` o `baja`, en minúsculas. `alta` es la urgencia máxima.
+- `tiempo_respuesta_objetivo_min_correcto`: escala por urgencia. 6 min riesgo vital inmediato, 8 alta, 10–12 media, 15 media-baja, 20 baja y 30 programado.
+
+**Criterio de urgencia y espera.** La urgencia depende del riesgo para la vida y de lo rápido que puede empeorar el paciente sin atención, no de lo frecuente que sea el tipo.
+
+- `alta`: riesgo vital inmediato o potencial (parada cardiorrespiratoria, anafilaxia, inconsciente sin causa, accidentes de alta energía, hemorragia grave). Objetivo de 6 min si el riesgo es inmediato y de 8 si es potencial.
+- `media`: hace falta valoración sanitaria, pero el cuadro rara vez es mortal de inmediato (heridas, caídas, estado etílico, violencia de género, agresión sexual). Objetivo de 10–12 min, y 15 si además no hay riesgo vital.
+- `baja`: sin riesgo vital, la atención puede esperar o está programada (patología digestiva, psicosomática, certificación psiquiátrica, orden médica). Objetivo de 20 min, y 30 si es un acto programado.
+- `requiere_medico_correcto` es True cuando el cuadro puede necesitar intervención médica y False cuando basta el soporte básico (caída, monopatín, bicicleta).
+
+Los valores originales no seguían ninguna lógica: la parada cardiorrespiratoria tenía 11 min y la patología digestiva, prioridad alta con 12 min. Se aplica la misma escala a los 30 tipos originales y a los nuevos para que sean comparables entre sí.
+
+**Tipos nuevos.** Son 12 tipos que aparecen en `activaciones` y no estaban en el catálogo (ids 31–42). Sus columnas originales quedan vacías.
+
+- Urgencia alta: entra siempre, aunque tenga una sola observación.
+- Urgencia media o baja: solo si representa al menos el 0,1 % de las activaciones.
+- Si dos tipos tienen los mismos valores y el mismo tipo de relato, se unen: más tipos confunden más al agente. Autobús, tren, avión y explosión → "Accidente o suceso grave con múltiples víctimas". Infarto → patología cardiovascular, arrollamiento de tren → atropello, arma de fuego → arma blanca, intoxicación por fármacos → sobredosis.
+- Un tipo que absorbe a otros toma la espera más exigente de sus miembros.
+
+**Fuera de catálogo.** Los códigos de recursos enviados (`1 SVB`), las instituciones (`Policía nacional`), los servicios administrativos o de apoyo, los lugares y los registros sin dato no son un tipo de emergencia. El agente los trata como "fuera de catálogo". Con el catálogo limpio, el 96,3 % de las activaciones queda asignado a un tipo (antes, el 92,0 %).
+
+**Límite.** Los valores `_correcto/a` son criterio clínico, no salen de los datos: en `activaciones` la prioridad y el tiempo real hasta la intervención son casi iguales para todos los tipos. Pendiente de validar con Bluetab.
+
+### Agente
+
+El LLM clasifica el `tipo_id` a partir del relato de la emergencia. La categoría, `requiere_medico`, el tiempo objetivo y la prioridad se leen del catálogo limpio. Si el relato no encaja, responde "no está claro" o "fuera de catálogo". En desarrollo.
+
+### Cómo ejecutarlo
+
+Desde `cleaning`, con el entorno activo y la carpeta `data_clean` creada:
+
+```
+python limpieza_tipos_emergencia.py
+```

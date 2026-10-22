@@ -7,7 +7,8 @@ Carpeta del caso 1.3 del proyecto. El objetivo es agrupar los 21 distritos de Ma
 - `limpieza_socioeconomico.ipynb` -> `socioeconomico_limpio.csv` (21 filas)
 - `limpieza_distritos.ipynb` -> `distritos_limpio.csv` (21 filas)
 - `limpieza_activaciones.ipynb` -> `activaciones_limpio.csv` (152.107 filas, 13 columnas)
-- `cruces_datasets.ipynb` -> `tabla_distritos.csv` (21 filas, una por distrito: la tabla que entra al clustering)
+- `cruces_datasets.ipynb` -> `tabla_distritos.csv` (21 filas, una por distrito) y `tabla_distritos_norm.csv` (la misma tabla con las columnas numéricas en escala 0-1: la que entra al clustering)
+- `socioeconomico_normalizado.csv`: el socioeconómico limpio con las columnas numéricas en escala 0-1
 
 ## Orden de ejecución
 
@@ -25,8 +26,8 @@ Los notebooks leen el CSV original de la carpeta `data` del repo (o junto al not
 - Nombres normalizados con una regla (mayúsculas, sin tildes; si el texto es el principio de un único nombre oficial, se completa). Sin diccionarios cerrados, como pidió Bluetab: lo que no encaje se queda sin tocar y se lista.
 - Centro, Tetuán y Chamartín salían dos veces. Las copias no se contradicen, así que se juntan en una fila con el id original (1-21); la primera copia de Centro no tenía población y se completa con la de la otra copia.
 - Moratalaz tenía población -999 (valor centinela): se pasa a vacío y se recupera cruzando con el socioeconómico (95.840). Igual para San Blas-Canillejas (162.715) y las superficies de Retiro (5,46 km²) y Salamanca (5,41 km²).
-- Barajas no tiene población en ninguna tabla: se estima como densidad x superficie (47.703), la misma estimación que en el socioeconómico. Pendiente de confirmar.
-- `num_hospitales` y `base_samur` se dejan como vienen. Se comparan con los catálogos de hospitales y bases en `cruces_datasets.ipynb` y no coinciden en varios distritos (ver Pendiente).
+- Barajas no tiene población en ninguna tabla: se estima como densidad x superficie (47.703), la misma estimación que en el socioeconómico. Es una estimación, no un dato real.
+- `num_hospitales` y `base_samur` se dejan como vienen. Se comparan con los catálogos de hospitales y bases en `cruces_datasets.ipynb` y no coinciden en varios distritos (ver Cruces entre datasets).
 - El CSV original no se toca: el limpio se guarda aparte.
 
 ## Socioeconómico
@@ -36,9 +37,10 @@ Los notebooks leen el CSV original de la carpeta `data` del repo (o junto al not
 - Misma regla de nombres que en distritos.
 - `num_centros_salud` venía como texto: "ocho" pasa a 8 con una regla que descompone la palabra-número y suma sus partes (decena + unidad), no con una lista cerrada de equivalencias, como pidió Bluetab. "N/A" pasa a vacío (no sabemos el número y no lo inventamos).
 - Centro, Tetuán y Salamanca salían dos veces y se juntan rellenando huecos (así Tetuán recupera el índice de vulnerabilidad, 0,55, y sus 6 centros de salud). La única contradicción es la densidad de Centro (28.626,8 frente a 28.627,0): diferencia de redondeo, nos quedamos el primer valor.
-- Valores imposibles que pasan a vacío: % de mayores de 65 negativo (Chamartín y Ciudad Lineal), paro por encima de 100 (Moncloa-Aravaca y Hortaleza), población -999 (Barajas) y vulnerabilidad 1,5 (Carabanchel, asumiendo que el índice va de 0 a 1: pendiente de confirmar). Los rangos que usamos son: porcentajes de 0 a 100, vulnerabilidad de 0 a 1, edad media de 15 a 90, y población, superficie, renta y densidad por encima de 0.
-- Los dos valores de paro por encima de 100 (118,1 y 116,3) podrían ser 11,8 y 11,6 con la coma desplazada, pero no lo podemos comprobar, así que no se corrigen y se preguntan.
-- Había 10 huecos sin dato (renta de Retiro y Ciudad Lineal, % de mayores de 65 de Chamartín y Ciudad Lineal, paro de Moncloa-Aravaca, Hortaleza y Villa de Vallecas, vulnerabilidad de Carabanchel y Barajas, centros de salud de San Blas-Canillejas). No hay fuente en el proyecto, y con 21 distritos no podemos quitar ninguno del clustering, así que los rellenamos con una regla: la media de los 3 distritos más parecidos que sí tienen el dato (vecinos más cercanos, k=3). Para medir lo parecidos que son se usan los indicadores sociales en la misma escala y solo los que el distrito tiene; en los centros de salud se añade la población. Es una suposición nuestra, no un dato real, y está pendiente de confirmar con Bluetab. El notebook enseña con qué distritos se calcula cada valor. Ya no queda ningún valor vacío en `socioeconomico_limpio.csv`, y `tabla_distritos.csv` ya lleva los valores rellenos.
+- Valores imposibles que pasan a vacío: % de mayores de 65 negativo (Chamartín y Ciudad Lineal), paro por encima de 100 (Moncloa-Aravaca y Hortaleza), población -999 (Barajas) y vulnerabilidad 1,5 (Carabanchel, asumiendo que el índice va de 0 a 1, que es donde está el resto de distritos). Los rangos que usamos son: porcentajes de 0 a 100, vulnerabilidad de 0 a 1, edad media de 15 a 90, y población, superficie, renta y densidad por encima de 0.
+- Los dos valores de paro por encima de 100 (118,1 y 116,3) podrían ser 11,8 y 11,6 con la coma desplazada, pero no lo podemos comprobar, así que no se corrigen: quedan vacíos.
+- Había 10 huecos sin dato (renta de Retiro y Ciudad Lineal, % de mayores de 65 de Chamartín y Ciudad Lineal, paro de Moncloa-Aravaca, Hortaleza y Villa de Vallecas, vulnerabilidad de Carabanchel y Barajas, centros de salud de San Blas-Canillejas). No hay fuente en el proyecto, y con 21 distritos no podemos quitar ninguno del clustering, así que los rellenamos con una regla: la media de los 3 distritos más parecidos que sí tienen el dato (vecinos más cercanos, k=3). Para medir lo parecidos que son se usan los indicadores sociales en la misma escala y solo los que el distrito tiene; en los centros de salud se añade la población. Es una suposición nuestra, no un dato real; el notebook enseña con qué distritos se calcula cada valor. Ya no queda ningún valor vacío en `socioeconomico_limpio.csv`, y `tabla_distritos.csv` ya lleva los valores rellenos.
+- Las columnas vienen en escalas muy distintas (la renta va de 23.000 a 71.000 y la vulnerabilidad de 0 a 1), así que para el clustering cada columna numérica se pasa a escala 0-1 con min-max y se guarda aparte en `socioeconomico_normalizado.csv`. El limpio original no se toca.
 
 ## Activaciones
 
@@ -74,22 +76,7 @@ El detalle con los números está en `limpieza_activaciones.ipynb` (sección "Va
 - **unidades_samur: sí.** Encaja el 100% por `unidad_id` (por id, no por código, que se repite). Da la carga por unidad y las unidades de cada distrito.
 - **bases_samur y hospitales: sí.** Oferta por distrito: bases, unidades, hospitales y camas. Los catálogos escriben el distrito de otra forma (`LA LATINA`, `FUENCARRAL`, `VALLECAS`), así que se normaliza con una regla (quitar el artículo y completar si el texto es el principio de un único distrito oficial), sin diccionarios. Las unidades se buscan solo entre los distritos con base, y así `VALLECAS` encaja en Puente de Vallecas. Lo que no encaja (hospitales de otros municipios y el Hospital Infanta Leonor, cuyo distrito es solo `VALLECAS`) se lista y se deja fuera.
 - **Comprobación con `distritos.csv`:** `num_hospitales` no coincide con el catálogo de hospitales en 12 de 21 distritos, y `base_samur` no coincide con el catálogo de bases en 6 de 21. No corregimos ninguna de las dos fuentes y la tabla usa los catálogos.
-- **tipos_emergencia: todavía no.** Encaja el 92%, pero `INTOXICACION ETILICA` y `CAIDA` salen dos veces con categoría y prioridad distintas (14.223 activaciones afectadas). Hasta que Bluetab diga cuál manda, no se une.
+- **Normalización 0-1:** igual que en el socioeconómico, las columnas numéricas de la tabla pasan a escala 0-1 con min-max y se guardan en `tabla_distritos_norm.csv`, que es la que entra al clustering. Los huecos de la oferta se mantienen vacíos (no son ceros: el catálogo no cubre esos distritos).
+- **tipos_emergencia: todavía no.** Encaja el 92%, pero `INTOXICACION ETILICA` y `CAIDA` salen dos veces con categoría y prioridad distintas (14.223 activaciones afectadas). Como no hay forma de saber cuál de las dos versiones es la correcta, no se une el catálogo; para los tipos más frecuentes se usa el texto de la propia activación.
 - **accidentes: no para el clustering.** Es de tráfico, incluye municipios de fuera de Madrid y le faltan distritos. Posible ampliación (riesgo vial).
-- **meteorología y calendario: no se puede.** Van por día y las activaciones no tienen día, así que no hay cruce por fecha.
-
-## Pendiente (preguntas para Bluetab)
-
-- **Regla de medianoche (ya implementada):** queda validar con Bluetab los límites elegidos (solicitud 20:00-23:59 e intervención 00:00-06:59 suma 24 h; 569 cruces y 41 errores de registro con el tiempo vacío sin borrar la activación). Está justificada con los datos en `limpieza_activaciones.ipynb` y el tiempo medio por distrito ya está en `tabla_distritos.csv`; si prefieren otros límites se cambian y se recalcula.
-- **Día de la activación:** el archivo no incluye el día de solicitud ni de intervención, solo año, mes y horas. Bluetab confirmó por correo (14/10) que ese dato no existe en la fuente (el dato abierto del SAMUR solo publica año, mes y horas) y que hay que tratarlo como una limitación, así que no lo hemos inventado. Sin él no se pueden cruzar meteorología ni calendario.
-- **63 `activacion_id` repetidos con datos distintos:** conservamos las dos filas. ¿Cuál es la versión correcta?
-- **Hospital vacío** (99.787 filas, el 65%) como `NO CONSTA`: ¿vale ese criterio?
-- **tipos_emergencia duplicados** (`INTOXICACION ETILICA` y `CAIDA`): ¿qué versión es la correcta?
-- **Huecos del socioeconómico:** renta de Retiro y Ciudad Lineal, % de mayores de 65 de Chamartín y Ciudad Lineal, paro de Moncloa-Aravaca, Hortaleza y Villa de Vallecas, vulnerabilidad de Carabanchel y Barajas, centros de salud de San Blas-Canillejas. Los hemos rellenado con la media de los 3 distritos más parecidos (suposición nuestra). ¿Hay fuente oficial para sustituirlos?
-- **Índice de vulnerabilidad:** hemos asumido que va de 0 a 1. ¿Es correcto?
-- **Población de Barajas:** estimada como densidad x superficie (47.703). ¿Tienen el dato real?
-- **Paro por encima de 100** (Moncloa-Aravaca 118,1 y Hortaleza 116,3): ¿son 11,8 y 11,6 con la coma desplazada?
-- **Hospitales y bases:** `num_hospitales` y `base_samur` de `distritos.csv` no coinciden con los catálogos en varios distritos. ¿Cuál es la fuente buena?
-- **Hospital Infanta Leonor:** en el catálogo su distrito es `VALLECAS`. ¿Es Puente o Villa de Vallecas?
-- **Vallecas a secas (39 activaciones):** no se resuelve con otros datasets; las dejamos como `NO CONSTA` y fuera del análisis por distrito, como permitió Bluetab. ¿Os parece bien?
-
+- **meteorología y calendario: no se puede.** Van por día y las activaciones no tienen día: el dato abierto del SAMUR solo publica año, mes y horas (Bluetab lo confirmó por correo el 14/10), así que no hay cruce por fecha. Es una limitación del dato, no algo que podamos inventar.

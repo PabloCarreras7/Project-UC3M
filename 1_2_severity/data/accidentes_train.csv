@@ -1,5 +1,5 @@
 tipo_colision,estado_firme,tipo_via,ubicacion,tipo_accidente,circulacion,franja_horaria,carretera_grupo,distrito,vehiculos_implicados,con_moto,con_pesado,hora_decimal,grave
-,Seco y limpio,TRONCO,SUPERFICIE,Colision entre vehiculos,DENSA,tarde,M30,USERA,3.0,0,0,16.616666666666667,0
+COLISIÓN POR ALCANCE,Seco y limpio,TRONCO,SUPERFICIE,Colision entre vehiculos,DENSA,tarde,M30,USERA,3.0,0,0,16.616666666666667,0
 Otro,Seco y limpio,VIA DE SERVICIO,SUPERFICIE,Salida de via,FLUIDA,noche,M30,HORTALEZA,1.0,1,0,3.6,0
 COLISIÓN POR ALCANCE,Seco y limpio,VIA DE SERVICIO,SUPERFICIE,Colision entre vehiculos,CONGESTIONADA,tarde,M30,CIUDAD LINEAL,2.0,0,0,14.85,0
 COLISIÓN POR ALCANCE,Seco y limpio,TRONCO,SUPERFICIE,Colision entre vehiculos,DENSA,tarde,M30,MONCLOA,2.0,0,0,15.5,0
@@ -676,7 +676,7 @@ COLISIÓN LATERAL,Seco y limpio,TRONCO,SUPERFICIE,Colision entre vehiculos,CONGE
 COLISIÓN POR ALCANCE,Seco y limpio,VIA DE SERVICIO,TÚNEL,Colision entre vehiculos,DENSA,manana,M30,BARAJAS,2.0,0,0,9.766666666666667,0
 Otro,Mojado,RAMAL,SUPERFICIE,Salida de via,FLUIDA,tarde,M30,HORTALEZA,1.0,1,0,12.3,0
 ,Seco y limpio,VIA DE SERVICIO,SUPERFICIE,Salida de via,DENSA,tarde,M30,CHAMBERI,1.0,1,0,15.483333333333333,0
-COLISIÓN MEDIANA,,RAMAL,TÚNEL,Salida de via,FLUIDA,manana,M30,USERA,1.0,0,0,7.883333333333333,0
+COLISIÓN MEDIANA,Seco y limpio,RAMAL,TÚNEL,Salida de via,FLUIDA,manana,M30,USERA,1.0,0,0,7.883333333333333,0
 COLISIÓN POR ALCANCE,Seco y limpio,VIA DE SERVICIO,SUPERFICIE,Colision entre vehiculos,CONGESTIONADA,tarde,M30,USERA,2.0,0,0,16.966666666666665,0
 COLISIÓN POR ALCANCE,Seco y limpio,TRANSFER,SUPERFICIE,Colision entre vehiculos,DENSA,tarde,M30,RETIRO,2.0,0,0,14.416666666666666,0
 COLISIÓN POR ALCANCE,Seco y limpio,VIA DE SERVICIO,SUPERFICIE,Colision entre vehiculos,DENSA,tarde,M30,CARABANCHEL,2.0,0,0,15.433333333333334,0

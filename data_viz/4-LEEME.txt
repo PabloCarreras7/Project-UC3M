@@ -1,0 +1,19 @@
+Graficos de la exploracion de activaciones y distritos (caso 1.3)
+Generados con data_viz/activaciones-analysis.ipynb (reproducible desde el repo)
+
+1. activaciones_por_mes.png - 152.107 activaciones en 2024 (416/dia, 366 dias). Por dia: junio 459, agosto 347 (-24% respecto a junio).
+2. activaciones_por_hora.png - ritmo diario: minimo a las 4h, maximo a las 13h (3,3x).
+3. heatmap_mes_hora.png - mapa de calor mes x hora (por dia): patron diario parecido en todos los meses.
+4. intoxicacion_nocturna.png - a las 3h, el 31% de las llamadas es intoxicacion etilica (a mediodia no llega al 3%); de 0 a 7h es el tipo n1.
+5. tipos_emergencia_top10.png - cardiovascular (28.144) y caidas (26.013) = 1/3 del servicio. Etiquetas canonicas del catalogo cuando hay correspondencia (Heridas suma 6.725 con la fusion documentada); original cuando no.
+6. prioridades.png - 30% prioridad alta, 50% media, 20% baja.
+7. edad_pacientes.png - OJO: la edad sale repartida casi uniforme de 0 a 99 (y sexo 50/50), algo raro en datos reales. Patron a validar con Bluetab; mientras tanto no se usa para insights.
+8. demanda_por_distrito.png - Centro: 148 act./1.000 residentes, 3,1x la media de los 21 distritos (47) y 2,2x el segundo (Moncloa-Aravaca, 68). Ojo: el denominador es poblacion residente y Centro recibe mucha gente de paso (hipotesis: ocio nocturno).
+9. renta_vs_demanda.png - en estos 21 distritos no se ve "mas vulnerabilidad, mas emergencias" (corr. renta +0,19 con Centro, +0,42 sin).
+10. densidad_vs_tiempo_respuesta.png - los distritos densos tienen respuesta mas rapida (corr. -0,85 entre medias distritales, n=21; de 6,7 min en Chamberi a 12,0 en Barajas). Asociacion, no causalidad.
+12. activaciones_por_categoria.png - cruce con el catalogo canonico de tipos (caso 2.2): trauma 38,9% + medica 28,2% = 2 de cada 3 activaciones; 93,4% clasificadas (142.150 de 152.107) y 6,6% sin correspondencia en catalogo (listadas en el notebook, sin inventar categoria). Solo equivalencias documentadas por Bluetab (fusiones 100/101/102 -> 1/5/29).
+11. oferta_vs_demanda.png - la base registrada de la unidad rara vez coincide con el distrito de la activacion: 4% (11% en los 8 distritos con base propia); el catalogo no cubre el 8% de las unidades.
+
+Caveats: correlaciones entre 21 distritos (no causalidad); activaciones sin dia de la semana;
+catalogos de oferta posiblemente incompletos; 10 huecos sociales imputados con kNN;
+lugar de activacion no es residencia del paciente.

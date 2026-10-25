@@ -1,5 +1,5 @@
 Graficos de la exploracion de activaciones y distritos (caso 1.3)
-Generados con data_viz/analisis-graficos.ipynb (un solo notebook con los graficos y los mapas, cada uno con su explicacion; reproducible desde el repo)
+Generados con data_viz/analisis_socioeconomico_distritos_y_activaciones.ipynb (un solo notebook con los graficos y los mapas, cada uno con su explicacion; reproducible desde el repo)
 
 1. activaciones_por_mes.png - 152.107 activaciones en 2024 (416/dia, 366 dias). Por dia: junio 459, agosto 347 (-24% respecto a junio).
 2. activaciones_por_hora.png - ritmo diario: minimo a las 4h, maximo a las 13h (3,3x).

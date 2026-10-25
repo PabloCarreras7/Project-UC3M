@@ -1,0 +1,17 @@
+variable,role,type,notes
+grave,target,binary,1 if heridos_graves>0 OR victimas_mortales>0; ~2.2% positive
+tipo_colision,feature,categorical,Cleaned
+estado_firme,feature,categorical,Cleaned
+tipo_via,feature,categorical,Cleaned
+ubicacion,feature,categorical,Superficie / Tunel
+tipo_accidente,feature,categorical,Collision type family
+circulacion,feature,categorical,Traffic density; cleaned in M1
+franja_horaria,feature,categorical,"From hora_decimal: noche 22-5, manana 6-11, tarde 12-17, tarde-noche 18-21"
+carretera_grupo,feature,categorical,"Top roads after M1 cleaning (M30, A2, M607, A5, A4, M11, A3) + Other"
+distrito,feature,categorical,District; cleaned in M1; about 25 levels
+vehiculos_implicados,feature,numeric,-1 treated as missing in M1
+con_moto,feature,binary,1 if motos_implicadas >= 1
+con_pesado,feature,binary,1 if pesados_implicados >= 1
+hora_decimal,feature,numeric,"Fractional clock time in [0, 24); feeds franja_horaria"
+heridos_* / victimas_mortales,excluded_leakage,numeric,Never as inputs
+descripcion,excluded,text,Deferred to task 2.1 RAG

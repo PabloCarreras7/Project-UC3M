@@ -1,8 +1,8 @@
 # Caso 1.3 - Segmentación socio-sanitaria de Madrid
 
-Carpeta del caso 1.3 del proyecto. El objetivo es agrupar los 21 distritos de Madrid según su perfil de riesgo y su contexto social, cruzando el socioeconómico con las activaciones del SAMUR.
+Caso 1.3 del proyecto. El objetivo es agrupar los 21 distritos de Madrid según su perfil de riesgo y su contexto social, cruzando el socioeconómico con las activaciones del SAMUR.
 
-## Archivos
+## Archivos utilizados y resultados
 
 - `limpieza_socioeconomico.ipynb` -> `socioeconomico_limpio.csv` (21 filas)
 - `limpieza_distritos.ipynb` -> `distritos_limpio.csv` (21 filas)
@@ -17,7 +17,7 @@ Carpeta del caso 1.3 del proyecto. El objetivo es agrupar los 21 distritos de Ma
 3. `limpieza_activaciones.ipynb`
 4. `cruces_datasets.ipynb` (usa los tres CSV limpios)
 
-Los notebooks leen el CSV original de la carpeta `data` del repo (o junto al notebook) y guardan el limpio en esta carpeta. Cada celda de texto explica el porqué de cada decisión.
+Los notebooks leen los CSV originales y generan los CSV limpios sin modificar los originales. Cada celda de texto explica el porqué de cada decisión.
 
 ## Distritos
 

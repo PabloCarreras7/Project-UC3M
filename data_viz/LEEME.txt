@@ -1,22 +1,24 @@
 Graficos de la exploracion de activaciones y distritos (caso 1.3)
 Generados con data_viz/analisis_socioeconomico_distritos_y_activaciones.ipynb (un solo notebook con los graficos y los mapas, cada uno con su explicacion; reproducible desde el repo)
 
-1. graficos_eda/activaciones_por_mes.png - 152.107 activaciones en 2024 (416/dia, 366 dias). Por dia: junio 459, agosto 347 (-24% respecto a junio).
+Datos: activaciones_limpio.csv con el criterio del catalogo ya aplicado en la limpieza (146.567 filas, 39 tipos del catalogo, prioridad del catalogo en minusculas, tiempo_de_respuesta). El 3,6% de filas cuyo tipo no describia una urgencia se eliminaron en la limpieza y no entran en estos graficos.
+
+1. graficos_eda/activaciones_por_mes.png - 146.567 activaciones en 2024 (400/dia, 366 dias). Por dia: junio 438, agosto 338 (-23% respecto a junio).
 2. graficos_eda/activaciones_por_hora.png - ritmo diario: minimo a las 4h, maximo a las 13h (3,3x).
 3. graficos_eda/heatmap_mes_hora.png - mapa de calor mes x hora (por dia): patron diario parecido en todos los meses.
 4. graficos_eda/intoxicacion_nocturna.png - a las 3h, el 31% de las llamadas es intoxicacion etilica (a mediodia no llega al 3%); de 0 a 7h es el tipo n1.
-5. graficos_eda/tipos_emergencia_top10.png - cardiovascular (28.144) y caidas (26.013) = 1/3 del servicio. Etiquetas canonicas del catalogo cuando hay correspondencia (Heridas suma 6.725 con la fusion documentada); original cuando no.
-6. graficos_eda/prioridades.png - 30% prioridad alta, 50% media, 20% baja.
+5. graficos_eda/tipos_emergencia_top10.png - patologia cardiovascular (28.715) y caidas (26.265) = mas de 1/3 del servicio. Codigos literales del catalogo (39 tipos), tal como vienen en el CSV limpio.
+6. graficos_eda/prioridades.png - 40% de tipos de prioridad alta, 46% media, 14% baja (prioridad del catalogo: gravedad tipica del tipo, no la registrada en cada evento).
 7. graficos_eda/edad_pacientes.png - OJO: la edad sale repartida casi uniforme de 0 a 99 (y sexo 50/50), algo raro en datos reales. Patron a validar con Bluetab; mientras tanto no se usa para insights.
-8. graficos_eda/demanda_por_distrito.png - Centro: 148 act./1.000 residentes, 3,1x la media de los 21 distritos (47) y 2,2x el segundo (Moncloa-Aravaca, 68). Ojo: el denominador es poblacion residente y Centro recibe mucha gente de paso (hipotesis: ocio nocturno).
-9. graficos_eda/renta_vs_demanda.png - en estos 21 distritos no se ve "mas vulnerabilidad, mas emergencias" (corr. renta +0,19 con Centro, +0,42 sin).
-10. graficos_eda/densidad_vs_tiempo_respuesta.png - los distritos densos tienen respuesta mas rapida (corr. -0,85 entre medias distritales, n=21; de 6,7 min en Chamberi a 12,0 en Barajas). Asociacion, no causalidad.
-12. graficos_eda/activaciones_por_categoria.png - cruce con el catalogo canonico de tipos (caso 2.2): trauma 38,9% + medica 28,2% = 2 de cada 3 activaciones; 93,4% clasificadas (142.150 de 152.107) y 6,6% sin correspondencia en catalogo (listadas en el notebook, sin inventar categoria). Solo equivalencias documentadas por Bluetab (fusiones 100/101/102 -> 1/5/29).
-11. graficos_eda/oferta_vs_demanda.png - la base registrada de la unidad rara vez coincide con el distrito de la activacion: 4% (11% en los 8 distritos con base propia); el catalogo no cubre el 8% de las unidades.
+8. graficos_eda/demanda_por_distrito.png - Centro: 141 act./1.000 residentes, 3,1x la media de los 21 distritos (45) y 2,2x el segundo (Moncloa-Aravaca, 65). Ojo: el denominador es poblacion residente y Centro recibe mucha gente de paso (hipotesis: ocio nocturno).
+9. graficos_eda/renta_vs_demanda.png - en estos 21 distritos no se ve "mas vulnerabilidad, mas emergencias" (corr. renta +0,19 con Centro, +0,41 sin).
+10. graficos_eda/densidad_vs_tiempo_respuesta.png - los distritos densos tienen respuesta mas rapida (corr. -0,87 entre medias distritales, n=21; de 6,5 min en Chamberi a 10,7 en Barajas). Asociacion, no causalidad.
+12. graficos_eda/activaciones_por_categoria.png - categorias del catalogo canonico (caso 2.2): trauma 40,9% + medica 30,3% = mas de 2 de cada 3 activaciones; el 100% de las activaciones trae tipo catalogado desde la limpieza.
+11. graficos_eda/oferta_vs_demanda.png - la base registrada de la unidad rara vez coincide con el distrito de la activacion: 5,8% de las 113.905 identificadas (13% en los 7 distritos con base propia); 22% atendidas por unidades cuya base no tiene distrito seguro.
 
 Mapas (seccion 10 del notebook; descriptivos, no clustering):
-13. graficos_eda/mapa_demanda_vs_respuesta.png - Centro 148 act./1.000 residentes (3,5x la media simple de los otros 20 distritos, 42); respuesta mas lenta en Barajas (12,0 min), Villa de Vallecas (10,2) y Vicalvaro (10,1), mas rapida en Chamberi (6,7). En Centro y Barajas la poblacion presente no esta medida.
-14. graficos_eda/mapa_bivariante_demanda_respuesta.png - terciles de actividad y de tiempo de respuesta (Spearman -0,48; densidad vs tiempo -0,91; n=21). Solo Barajas combina actividad alta y respuesta lenta.
+13. graficos_eda/mapa_demanda_vs_respuesta.png - Centro 141 act./1.000 residentes (3,5x la media simple de los otros 20 distritos, 41); respuesta mas lenta en Barajas (10,7 min), Villa de Vallecas (10,0) y Vicalvaro (9,8), mas rapida en Chamberi (6,5). En Centro y Barajas la poblacion presente no esta medida.
+14. graficos_eda/mapa_bivariante_demanda_respuesta.png - terciles de actividad y de tiempo de respuesta (Spearman -0,60; densidad vs tiempo -0,88; n=21). Solo Barajas combina actividad alta y respuesta lenta.
 15. graficos_eda/mapa_contexto_social.png - renta, vulnerabilidad y % de mayores de 65 por distrito: el sur con menos renta y mas vulnerabilidad. Marco para el clustering, no explicacion. Valores imputados marcados con *.
 
 Caveats: correlaciones entre 21 distritos (no causalidad); activaciones sin dia de la semana;

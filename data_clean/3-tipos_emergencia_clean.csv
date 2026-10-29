@@ -1,0 +1,41 @@
+tipo_id,codigo,categoria,requiere_medico,tiempo_respuesta_objetivo_min,prioridad_base,categoria_correcta,requiere_medico_correcto,tiempo_respuesta_objetivo_min_correcto,prioridad_base_correcta
+1,Intoxicación etílica,Psiquiátrica,0,17,ALTA,Intoxicación,True,12,media
+2,Agresión sin especificar,Médica,False,16,alta,Trauma,True,10,media
+3,Apertura de puerta,Trauma,True,15,media,Otros,False,12,media
+4,Patología cardiovascular,Intoxicación,1,14,media,Médica,True,6,alta
+5,Heridas,Psiquiátrica,1,13,ALTA,Trauma,True,12,media
+6,Patología anafiláctica,Intoxicación,Si,8,Media,Médica,True,6,alta
+7,Convulsión y/o epilepsia,Intoxicación,1,18,baja,Médica,True,8,alta
+8,Patología respiratoria,Intoxicación,1,6,alta,Médica,True,8,alta
+9,Incendio,Intoxicación,0,12,Alta,Otros,False,10,media
+10,Certificación psiquiátrico,Otros,1,6,ALTA,Psiquiátrica,True,30,baja
+11,"Casual: caída, etc",Psiquiátrica,False,17,Media,Trauma,False,15,media
+12,Accidente menos de 3 victimas,Intoxicación,False,8,media,Trauma,True,8,alta
+13,Otros,Médica,True,12,media,Otros,False,20,baja
+14,Orden medica,Trauma,1,13,Alta,Médica,True,30,baja
+15,Patología psicosomática,Otros,False,13,baja,Psiquiátrica,False,20,baja
+16,Violencia de genero,Intoxicación,False,9,baja,Violencia/Social,True,12,media
+17,Accidente de motocicleta,Otros,True,8,alta,Trauma,True,8,alta
+18,Agresión con spray de defensa,Psiquiátrica,No,17,baja,Intoxicación,True,12,media
+19,Sobredosis,Otros,False,15,Media,Intoxicación,True,8,alta
+20,Diabético,Médica,1,14,media,Médica,True,10,media
+22,Accidente de bicicleta o monopatín,Intoxicación,0,6,Alta,Trauma,False,12,media
+23,Parada Cardiorespiratoria,Trauma,1,11,ALTA,Médica,True,6,alta
+24,Atropello,Médica,1,12,media,Trauma,True,6,alta
+25,Agresión sexual,Intoxicación,1,15,Media,Violencia/Social,True,12,media
+26,Arma blanca,Psiquiátrica,Si,12,ALTA,Trauma,True,6,alta
+28,Patología obstétrica,Psiquiátrica,False,18,alta,Médica,True,8,alta
+30,Inconsciente sin filiar causa,Trauma,0,9,media,Médica,True,6,alta
+31,Patología neurológica,,,,,Médica,True,8,alta
+32,Maltrato a menores y ancianos,,,,,Violencia/Social,True,12,media
+33,Precipitado,,,,,Trauma,True,6,alta
+34,"Patología médica no urgente (infecciosa, urológica, ginecológica, digestiva)",,,,,Médica,False,20,baja
+35,Autolisis (traumática y no traumática),,,,,Psiquiátrica,True,6,alta
+36,Accidente o suceso grave con múltiples víctimas,,,,,Trauma,True,6,alta
+37,Atrapamientos y derrumbamientos,,,,,Trauma,True,8,alta
+38,Riesgo químico,,,,,Intoxicación,True,8,alta
+39,Ahogado,,,,,Médica,True,6,alta
+40,Quemado,,,,,Trauma,True,8,alta
+41,Electrocutado,,,,,Trauma,True,6,alta
+42,Riesgo biológico,,,,,Médica,True,8,alta
+

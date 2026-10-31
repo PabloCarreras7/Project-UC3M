@@ -44,37 +44,43 @@ Este fichero no se sube a GitHub.
 
 
 
-## Caso 1.2 — Clasificación de gravedad
+## Accidentes — limpieza común (casos 1.2 y 2.1)
 
-`1_2_severity/data_cleaning.ipynb` lee `data/accidentes.csv` y escribe `1_2_severity/data/accidentes_clean.csv`. No modifica el original. De 2062 filas salen 1962.
+`data_viz/accidentes-analysis.ipynb` lee `data/accidentes.csv` y escribe `data_clean/accidentes_clean.csv` (1962 filas × 26 columnas, una por `numero_incidencia`). No modifica el original. Une las dos limpiezas que había (`1_2_severity/data_cleaning.ipynb` y `2_1_rag/pipeline.py`) y es la única entrada de `1_2_severity/feature_engineering.ipynb` y de `2_1_rag/embeddings.py`. El mismo notebook genera los gráficos de `data_viz/graficos_accidentes/`; `data_viz/diagrama_pipeline_accidentes.py` dibuja el diagrama del proceso (`00_pipeline_diagrama.png`).
+
+Las dos limpiezas anteriores se conservan como referencia, pero sus salidas (`1_2_severity/data/accidentes_clean.csv` y `data/accidentes_clean.csv`) ya no las usa nadie.
 
 ### Decisiones de limpieza
 
-**Duplicados.** 100 números de incidencia aparecen dos veces: es el mismo accidente. Se conserva la fila con más campos rellenos y, si empatan, la anterior. Un `-1` cuenta como vacío. Si la fila conservada tiene un campo vacío y la descartada lo trae relleno, se copia ese valor.
+**Duplicados.** 100 números de incidencia aparecen dos veces: es el mismo accidente. Se conserva la fila con más campos rellenos; si empatan, la de descripción más larga y, después, la anterior. Un `-1` cuenta como vacío. Si la fila conservada tiene un campo vacío y la descartada lo trae relleno, se copia ese valor (3 celdas). Las 45 discrepancias entre copias se registran.
 
-**Se dejan como vienen.** `numero_incidencia`, `fecha` (incluida la hora `0:00`), `hora`, `localizacion`, `eje`, `descripcion` y `unidad_samur_id`. También `ubicacion` (`SUPERFICIE`, `TÚNEL`), `tipo_accidente` y `distrito`.
+**Se dejan como vienen.** `numero_incidencia`, `hora`, `localizacion`, `eje`, `descripcion` y `unidad_samur_id`. También `ubicacion` (`SUPERFICIE`, `TÚNEL`), `tipo_accidente` y `distrito`.
 
 **Categóricas.** `(En blanco)`, `0`, `_` y el vacío pasan a nulo. El resto se unifica a una sola grafía: minúsculas, sin acentos ni puntuación. Si no hay un mapa, se usa la grafía más frecuente.
 
 - `estado_firme`: `seco` y `seco y limpio` → `Seco y limpio`; `mojado` → `Mojado`; `humedo` → `Húmedo`. `Otros` se queda.
 - `tipo_via`: `TRONCO`, `VIA DE SERVICIO`, `RAMAL`, `TRANSFER`, `TABLERO`, `TUNEL`.
 - `carretera`: mayúsculas y sin guion. `M-607` y `M607` → `M607`. El vacío pasa a nulo.
-- `tipo_colision`: los vacíos siguen vacíos. No se rellenan con la descripción.
+- `tipo_colision`: de los 71 vacíos tras deduplicar, 68 se rellenan con el tipo que Claude infirió desde la descripción (`infer_tipo_colision` en `2_1_rag/pipeline.py`) y se marcan en `tipo_colision_inferido`. Los 3 sin descripción siguen vacíos. El notebook no llama a la API: lee `.cache/tipo_colision.json` y, si no existe (`.cache/` no se sube), los tipos que ya guarda `data_clean/accidentes_clean.csv`.
 - `circulacion`: vacío, `0` y `_` → nulo. `FLUIDA`, `CONGESTIONADA` y `DENSA` se quedan.
 
 **Recuentos.** Pasan a número. `-1` es un dato ausente y pasa a nulo (`vehiculos_implicados` y `heridos_leves`). Los 17 ceros de `vehiculos_implicados` se conservan. `motos_implicadas`, `pesados_implicados`, `heridos_graves` y `victimas_mortales` no traen `-1`.
 
 **Columnas nuevas**
 
-- `fecha_calendario`: la fecha de `fecha`, sin el `0:00`. Se prueba día/mes/año, luego año-mes-día, luego mes/día/año.
-- `hora_decimal`: la hora de `hora`, en horas + minutos/60. Los segundos no cuentan. `15:11:00` → `15.183`.
+- `fecha`: se toma del `numero_incidencia` (`AAAAMMDD-…`), en formato `YYYY-MM-DD`. Corrige 42 fechas cuyo texto tenía día y mes invertidos o desplazados. `fecha_calendario` es la misma fecha como `datetime`.
+- `hora_decimal`: la hora de `hora`, en horas + minutos/60 + segundos/3600.
 - `grave`: 1 si `heridos_graves > 0` o `victimas_mortales > 0`. Un recuento ausente no cuenta como grave. Son 45 de 1962.
+- `tipo_colision_inferido`: True en los 68 `tipo_colision` rellenados desde la descripción.
+- `fuera_de_madrid`: True en los 50 partes de municipios vecinos (Móstoles, Alcorcón…).
+
+## Caso 1.2 — Clasificación de gravedad
 
 
 
 ### Ingeniería de variables
 
-`1_2_severity/feature_engineering.ipynb` lee `accidentes_clean.csv`, construye las variables y después parte la tabla. Escribe `accidentes_train.csv`, `accidentes_test.csv` y `variable_dictionary.csv` en `1_2_severity/data/`.
+`1_2_severity/feature_engineering.ipynb` lee `data_clean/accidentes_clean.csv`, construye las variables y después parte la tabla. Escribe `accidentes_train.csv`, `accidentes_test.csv` y `variable_dictionary.csv` en `1_2_severity/data/`.
 
 **Columnas nuevas**
 
@@ -85,7 +91,7 @@ Este fichero no se sube a GitHub.
 
 **Entran tal como quedaron en la limpieza.** `tipo_colision`, `estado_firme`, `tipo_via`, `ubicacion`, `tipo_accidente`, `circulacion`, `distrito` y `vehiculos_implicados`.
 
-**Salen de la tabla.** `heridos_graves` y `victimas_mortales` definen `grave`. `heridos_leves` es un desenlace. `descripcion` queda para la tarea 2.1. También se omiten `numero_incidencia`, `localizacion`, `eje`, `unidad_samur_id`, `fecha`, `hora` y `fecha_calendario`. `motos_implicadas` y `pesados_implicados` quedan sustituidos por las dos banderas, y `carretera` por `carretera_grupo`.
+**Salen de la tabla.** `heridos_graves` y `victimas_mortales` definen `grave`. `heridos_leves` es un desenlace. `descripcion` queda para la tarea 2.1. También se omiten `numero_incidencia`, `localizacion`, `eje`, `unidad_samur_id`, `fecha`, `hora`, `fecha_calendario`, `tipo_colision_inferido` y `fuera_de_madrid`. `motos_implicadas` y `pesados_implicados` quedan sustituidos por las dos banderas, y `carretera` por `carretera_grupo`.
 
 **Partición.** 80/20 estratificada por `grave` (`random_state` 42). Train: 1569 filas, 36 graves (2,29 %). Test: 393 filas, 9 graves (2,29 %).
 
@@ -93,16 +99,13 @@ Este fichero no se sube a GitHub.
 
 Consulta los informes de accidentes. No cuenta filas ni calcula medias: busca los informes cuya descripción se parece a la pregunta y responde solo con lo que ha recuperado.
 
-### Por qué se procesan los datos
+### Datos
 
-`data/accidentes.csv` no se puede consultar tal cual.
+El índice parte de `data_clean/accidentes_clean.csv`, la limpieza común descrita arriba. Se indexan las 1860 descripciones no vacías; los 102 partes sin texto (1 grave) quedan fuera.
 
-- Hay 100 números de incidencia repetidos. Cada pareja es el mismo accidente, con la misma hora y la misma localización. El proceso se queda con una fila y completa los huecos (descripción, tipo de colisión, etc.) con la otra.
-- `fecha` mezcla día/mes, mes/día e ISO. 44 valores no coinciden con la fecha que ya va en el número de incidencia. La fecha de salida es esa, en formato `YYYY-MM-DD`. La hora queda en `HH:MM:SS`.
-- `tipo_via`, `estado_firme` y `circulacion` repiten el mismo valor con distinta escritura. `0`, `_` y `(En blanco)` se dejan vacíos. `M607` pasa a `M-607`.
-- 80 filas no tienen `tipo_colision`. Si hay descripción, Claude la lee y elige una clase de las que ya usa el dataset: alcance, lateral, frontal, mediana u otro. Sin descripción el campo sigue vacío.
+`2_1_rag/pipeline.py` fue la primera limpieza del caso. Hoy solo se usa su función `infer_tipo_colision`, que rellena los `tipo_colision` vacíos: Claude Sonnet 4.6, a temperatura 0, recibe lotes de 15 partes (`numero_incidencia`, `tipo_accidente` y `descripcion`) y devuelve una de cinco etiquetas (alcance, lateral, frontal, mediana u Otro). El resultado se guarda en `.cache/tipo_colision.json`. Falta validar esas etiquetas con una muestra revisada a mano.
 
-`2_1_rag/pipeline.py` lee el CSV original y escribe `data/accidentes_clean.csv`. No modifica `accidentes.csv`. De 2062 filas salen 1962. Añade `hora_decimal` y `grave` (1 si hay heridos graves o víctimas mortales).
+Los metadatos de cada vector son `numero_incidencia`, `distrito` y `fecha`. Falta añadir `grave` y `tipo_colision`: «accidente grave» en el texto no equivale a `grave = 1` (54 partes lo escriben con `grave = 0`), así que esa pregunta debe filtrarse por metadato.
 
 ### Arquitectura de embeddings
 
@@ -118,16 +121,15 @@ Cada descripción no vacía es un solo vector. No se trocean: un informe cabe en
 
 ### Agente
 
-`agent.py` usa Deep Agents con Claude Opus. La única herramienta de consulta es `buscar_descripciones`. No hay subagentes. La respuesta final es un JSON con una nota y los incidentes (número, distrito, fecha y qué ocurrió).
+`agent.py` usa Deep Agents (`create_deep_agent`) con Claude Opus 5.5. El grafo compilado es `__start__ → PatchToolCalls → model ⇄ tools → __end__`; la única herramienta de consulta es `buscar_descripciones` (Deep Agents añade además sus herramientas de ficheros y `task`, que este caso no usa). `MemorySaver` guarda el historial por `thread_id`. La respuesta final es un JSON con una nota y los incidentes (número, distrito, fecha y qué ocurrió). `diagrama_agente.py` dibuja el grafo en `figuras/agente_langgraph.png`.
 
 `api.py` publica ese turno en `POST /chat` con FastAPI, en streaming. El frontend de `2_1_rag/frontend` muestra la cadena de pensamiento, la llamada a la herramienta y la tabla.
 
 ### Cómo ejecutarlo
 
-Desde `2_1_rag`, con el entorno activo y las claves en `.env`:
+Desde `2_1_rag`, con el entorno activo y las claves en `.env` (`data_clean/accidentes_clean.csv` ya está en el repositorio; para regenerarlo, ejecuta `data_viz/accidentes-analysis.ipynb`):
 
 ```
-python pipeline.py
 python embeddings.py
 python -m uvicorn api:app --port 8000
 ```

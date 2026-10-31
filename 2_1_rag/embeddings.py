@@ -46,7 +46,7 @@ def get_embeddings() -> HuggingFaceEmbeddings:
 
 
 def load_documents() -> list[Document]:
-    data = pd.read_csv(ROOT / "data" / "accidentes_clean.csv")
+    data = pd.read_csv(ROOT / "data_clean" / "accidentes_clean.csv")
     docs = []
     seen: set[str] = set()
     for row in data.itertuples():

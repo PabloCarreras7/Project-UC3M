@@ -22,19 +22,6 @@ pip install -r requirements.txt
 Las claves de API (si hacen falta) van en un fichero .env local.
 Este fichero no se sube a GitHub.
 
-## Reparto
-
-
-| Caso | Responsable |
-| ---- | ----------- |
-| 1.1  | Bea         |
-| 1.2  | Lukas       |
-| 1.3  | Diego       |
-| 2.1  | Dani        |
-| 2.2  | Pablo       |
-
-
-
 
 ## Normas de trabajo
 

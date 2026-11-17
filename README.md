@@ -82,6 +82,12 @@ Las dos limpiezas anteriores se conservan como referencia, pero sus salidas (`1_
 
 **Partición.** 80/20 estratificada por `grave` (`random_state` 42). Train: 1569 filas, 36 graves (2,29 %). Test: 393 filas, 9 graves (2,29 %).
 
+## Caso 1.3 — Segmentación socio-sanitaria
+
+Agrupa los 21 distritos de Madrid según su perfil de riesgo y su contexto social, cruzando el socioeconómico con las activaciones del SAMUR.
+
+`1_3_clustering/cruces_datasets.ipynb` cruza los datasets limpios y construye las tablas por distrito de `1_3_clustering/datos/` (una fila por distrito, con perfil social, demanda y oferta sanitaria). `1_3_clustering/segmentacion_final_distritos.ipynb` es el análisis definitivo: recorrido completo, modelo principal y comparaciones, con los gráficos en `graficos_cierre_9D/` y `graficos_recorrido_eda/`. Cada decisión está justificada en `1_3_clustering/README.md`.
+
 ## Caso 2.1 — Agente RAG
 
 Consulta los informes de accidentes. No cuenta filas ni calcula medias: busca los informes cuya descripción se parece a la pregunta y responde solo con lo que ha recuperado.

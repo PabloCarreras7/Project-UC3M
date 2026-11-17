@@ -11,7 +11,7 @@
 - C. Interfaz comprobada con `cruces_datasets.ipynb`, que construye las dos tablas distritales por separado.
 - D. Baseline 10D completo, con diagnóstico y pruebas originales.
 - E. Exploración socioeconómica completa: ritmos, tipos, edad registrada, demanda, contexto, oferta y mapas.
-- F. Desarrollo final: selección de variables, algoritmos, k, 9D principal y 10D comparado, robustez, DBSCAN, siluetas individuales, mediana/P90, análisis directo de tipologías y comprobación del enunciado.
+- F. Desarrollo final: selección de variables, algoritmos, k, 9D principal y 10D comparado, robustez, DBSCAN, siluetas individuales, mediana/P90, análisis directo de tipologías y conclusiones frente al enunciado.
 
 ### Dependencias y ejecución
 

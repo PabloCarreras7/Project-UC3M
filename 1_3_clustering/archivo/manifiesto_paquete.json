@@ -1,0 +1,327 @@
+[
+  {
+    "path": "1_3_clustering/README.md",
+    "sha256": "4d26f9e907552b0a45a7cfca473e446eee8dd4f2e079d60f8aff49ed7eea63c2",
+    "bytes": 83221
+  },
+  {
+    "path": "1_3_clustering/archivo/antes_consolidacion_2026-11-17/README.md",
+    "sha256": "b1981909b64d412fe7c5a0cfc862a582fd89fd7dd670375e346cf967ab2ee69e",
+    "bytes": 19402
+  },
+  {
+    "path": "1_3_clustering/archivo/antes_consolidacion_2026-11-17/README_cierre.md",
+    "sha256": "6f321ccfc9c72b14f414e0da3923ab3b41339069ce394c76b72253b026fdb548",
+    "bytes": 3733
+  },
+  {
+    "path": "1_3_clustering/archivo/antes_consolidacion_2026-11-17/README_recursos_samur.md",
+    "sha256": "b3f6b12d001a7117a67571ebe7566e24887d80689dc7a350eadb4cb1109bc702",
+    "bytes": 7513
+  },
+  {
+    "path": "1_3_clustering/archivo/antes_consolidacion_2026-11-17/analisis_socioeconomico_distritos_y_activaciones.ipynb",
+    "sha256": "733fac2a64c9ff9fefc233577337b142e6f9b99e5e64eb021ec68450e3d87d00",
+    "bytes": 2925097
+  },
+  {
+    "path": "1_3_clustering/archivo/antes_consolidacion_2026-11-17/clustering_distritos.ipynb",
+    "sha256": "ac3671889a967d41df9a2320109eb7fde65f7db4b88eb08654855d6c76141a2e",
+    "bytes": 470493
+  },
+  {
+    "path": "1_3_clustering/archivo/antes_consolidacion_2026-11-17/cruces_datasets.ipynb",
+    "sha256": "8a2db73f37471b221851c90e440262b6150fcb5e95060857f1ec5f9b9678815f",
+    "bytes": 76312
+  },
+  {
+    "path": "1_3_clustering/archivo/antes_consolidacion_2026-11-17/segmentacion_final_distritos.ipynb",
+    "sha256": "5e2f881ff4fbf7df353fa1824a83eb49f90e8f1f4d8e11c1950d0fa0f65e9717",
+    "bytes": 2843973
+  },
+  {
+    "path": "1_3_clustering/archivo/cobertura_consolidacion.json",
+    "sha256": "10a76222e5105a17ab0b4eaf5705e6f630cbea94d1d3857da07018a5a03d7a62",
+    "bytes": 74125
+  },
+  {
+    "path": "1_3_clustering/archivo/version_remota_dff7b22/README.md",
+    "sha256": "cae3bf45c7e7a828f594bcaefee1c2d89988d2819c9ff4709cd51a02436c6aab",
+    "bytes": 19312
+  },
+  {
+    "path": "1_3_clustering/archivo/version_remota_dff7b22/README_cierre.md",
+    "sha256": "8c6593723466c7ca38f770dca8d167482b2ccdd5f4145c263bfff583728c34eb",
+    "bytes": 2108
+  },
+  {
+    "path": "1_3_clustering/archivo/version_remota_dff7b22/README_recursos_samur.md",
+    "sha256": "5976c1e5fecb8dfee9d3c898bd713235e94f32354dbf63456fe466506cf82f79",
+    "bytes": 7423
+  },
+  {
+    "path": "1_3_clustering/archivo/version_remota_dff7b22/clustering_distritos.ipynb",
+    "sha256": "76d35c4c2c8dee1995327280e9607e44fda472403f37dfe523290b3aa9d9f222",
+    "bytes": 470976
+  },
+  {
+    "path": "1_3_clustering/archivo/version_remota_dff7b22/cruces_datasets.ipynb",
+    "sha256": "a089c3282a5a6bf197ae3745be020ab162cb8b792cb384f33718548e06604b20",
+    "bytes": 77756
+  },
+  {
+    "path": "1_3_clustering/archivo/version_remota_dff7b22/main.ipynb",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "1_3_clustering/archivo/version_remota_dff7b22/segmentacion_final_distritos.ipynb",
+    "sha256": "e597ed5040472f6c7549f00e9aab857f3360b23afd8897612962276d35fc8346",
+    "bytes": 2129674
+  },
+  {
+    "path": "1_3_clustering/comparacion_edad.json",
+    "sha256": "464b9527688ed1618f3916f908c0081a20ac449f116e0b787e6bddf5e47b0b82",
+    "bytes": 18105
+  },
+  {
+    "path": "1_3_clustering/cruces_datasets.ipynb",
+    "sha256": "2436fbf3eac0b8b8bdb4d783d08ad6416007a4f73f27bcf942ecd996c6c58d73",
+    "bytes": 79005
+  },
+  {
+    "path": "1_3_clustering/distritos_madrid.geojson",
+    "sha256": "d53400cbba8692a746f9e2821df0319cdcd3ea9a4a315b9a2f781dc0f4b9c9b7",
+    "bytes": 379088
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/00_correlacion_todas_las_variables.png",
+    "sha256": "bf9f9f0c3213bdd35903d724c5df77ed667a70f835c346b75c82bd2568353b8b",
+    "bytes": 361813
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/01_eleccion_de_k.png",
+    "sha256": "4ae53be6c98c2c0f34da203d0fe6f820ef0fa5ec554a17ad9221eff10760cef6",
+    "bytes": 75218
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/02_perfil_de_los_grupos.png",
+    "sha256": "9e3b3eaaeb183f43b74446074c4a3f9f581b0a88c9217173366885f59047a358",
+    "bytes": 95889
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/03_mapa_grupos.png",
+    "sha256": "5e759fcae004043d9de20b42f164f5ea236930868524bcf574235e6a69a3ca79",
+    "bytes": 200149
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/04_dendrograma_y_pca.png",
+    "sha256": "c7a200a7176d302e4a8fcc8d0908c2770bcfbe06ec3bcab7a3831b6306bce10e",
+    "bytes": 159261
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/05_mapas_variables.png",
+    "sha256": "e7af5f063b0ea286f26f0390450a0df16a4ad493ca18752c7702343266715db1",
+    "bytes": 802257
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/06_densidad_vs_tiempo.png",
+    "sha256": "c22207027a45d22f325c4a9e2c293e9449851070312d2645982a6f5591456874",
+    "bytes": 102007
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/07_renta_vs_activaciones.png",
+    "sha256": "74e658397fb47435a244eaafecd61fa7a814aaa66b9bdaea9472df058ca2a762",
+    "bytes": 107080
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/08_tipologia_por_grupo.png",
+    "sha256": "bc64f760ca9a731d290a5f217406e0e5122a0ba3ab63d4dbe0a09d376cd43f87",
+    "bytes": 93555
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/09_tipos_concretos_por_grupo.png",
+    "sha256": "fcd5254884e8aec762ec5a78601c27e4190c845be50da0e2e74c6347a85619cb",
+    "bytes": 94320
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/10_ritmo_diario_e_intoxicacion.png",
+    "sha256": "1ba5360c02ec8a25a6c84ec828f1bfcd91db612d7635e74afb07e56f135e0239",
+    "bytes": 164595
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/11_estacionalidad.png",
+    "sha256": "f4e1eb645c8a09d49cc1f8a5243e69d3cf1e673dd61f376e359c0d1d5708760c",
+    "bytes": 124078
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/12_prioridad_y_oferta.png",
+    "sha256": "21704e03008502b1a8900c274302e57bbc3b2cdcd054f77a60c875e8062c6775",
+    "bytes": 123451
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/13_renta_vs_tipos_emergencia.png",
+    "sha256": "a73e97f09634e966d436c1a06a40e866c193811c8b5c6652b31f2d93936a64ca",
+    "bytes": 99495
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/14_dbscan_rejilla_completa.png",
+    "sha256": "08be9bbdf4f4129192032ad151b6caa152303c667019dd85a692601b234e68bd",
+    "bytes": 118127
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/15_silueta_por_distrito.png",
+    "sha256": "00bd43957a2e163a3ef8d92118ebbfa1e8e3580293ed62cf0bea2fd0071584cb",
+    "bytes": 103809
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/16_mediana_p90_respuesta.png",
+    "sha256": "edd8c4dd69da232e723ab138d744a124d1ad0efc4d3ed62838be23ee9592e30d",
+    "bytes": 162941
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/17_contexto_categorias_directo.png",
+    "sha256": "6c5b5d61cce8c77abf341b954e8dd946b8e7b1050924e0c632755767d2580188",
+    "bytes": 91861
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/18_diagnostico_edad_registrada.png",
+    "sha256": "0deb6fb64a5734fbb8f5ed56913bc7305dd47a6c462b63e2ef43f191ae17e685",
+    "bytes": 36921
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/19_comparacion_con_sin_edad.png",
+    "sha256": "1e5d1acf6256e7b0e92dedb72ec683e76faf04e7f9c0c1eee02e78572733079f",
+    "bytes": 116792
+  },
+  {
+    "path": "1_3_clustering/graficos_cierre_9D/20_dbscan_sin_edad.png",
+    "sha256": "94d7101c5d0fcd037cc7557c4d3637c0c081f81f4c2d51520120cf10b62a0743",
+    "bytes": 46047
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/activaciones_por_categoria.png",
+    "sha256": "54d61137be776f6decf5f283934b3226085a130144ef554febce369ad342b56f",
+    "bytes": 122986
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/activaciones_por_hora.png",
+    "sha256": "46478fd778eea729f636560e419ab8d306037a919ea2360b76bf9e096c6132c5",
+    "bytes": 101126
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/activaciones_por_mes.png",
+    "sha256": "376ed699d0d89220b05a291044a88254d3e47453e06a9a491aac30effb6eb26c",
+    "bytes": 88665
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/demanda_por_distrito.png",
+    "sha256": "3ed8325d0773619e83f6b0a245f61a6bbecf3d8f97770322e4640e097202894f",
+    "bytes": 157779
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/densidad_vs_tiempo_respuesta.png",
+    "sha256": "022659dae0e04e1fe61e930e0279ef785a33a2faac65669ebf2477b417c82be6",
+    "bytes": 114349
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/edad_pacientes.png",
+    "sha256": "d29255fb00ad2b1772ce3169adcabed2740d65fad0bb0850f23fa64ab369506d",
+    "bytes": 79275
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/heatmap_mes_hora.png",
+    "sha256": "8755fd1ee9bdd7b774f85cadc65bf2a3afb020ae095b45b044fa5deabe351a30",
+    "bytes": 67600
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/intoxicacion_nocturna.png",
+    "sha256": "f92fc89f9550c12e00473840cb987d623bd8d36d04de730062567de6ba11c41c",
+    "bytes": 124058
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/mapa_bivariante_demanda_respuesta.png",
+    "sha256": "fd2f0225ab1e1cf301f4e96939a2f29eff2fa68713924695d8ee5a82b74650fc",
+    "bytes": 302118
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/mapa_contexto_social.png",
+    "sha256": "55b199c189af71eaac3acfed8bd93b21010c011dd031d9604838189427e92bf6",
+    "bytes": 420698
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/mapa_demanda_vs_respuesta.png",
+    "sha256": "bb8ac753e3b6f3ee6e1521f3adabebeccd57684aa98953cad956f2250210532c",
+    "bytes": 396410
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/oferta_vs_demanda.png",
+    "sha256": "f5550aaaf37f634e0bd3db4401a9d89729749231f68006d4620881f73cde1856",
+    "bytes": 132998
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/prioridades.png",
+    "sha256": "cf8d34675cf9189ec62d456f540687eebda15edca5497c2a8eaed71e9ea101a2",
+    "bytes": 58376
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/renta_vs_demanda.png",
+    "sha256": "60d2a9743cf2142da03b95e81503a2c8c117eb44ef64fef43da45a020934914a",
+    "bytes": 129730
+  },
+  {
+    "path": "1_3_clustering/graficos_recorrido_eda/tipos_emergencia_top10.png",
+    "sha256": "aa8f9c135cdfb3946c6258b7740b2e46b5544595aef1904352a719acedab1b40",
+    "bytes": 130174
+  },
+  {
+    "path": "1_3_clustering/segmentacion_final_distritos.ipynb",
+    "sha256": "9b17ec9d2270b32a774cbb7db60f907071f73320de33ab94059dc93c716a6538",
+    "bytes": 6287007
+  },
+  {
+    "path": "1_3_clustering/tabla_distritos.csv",
+    "sha256": "e4d4125966f0f9bf781212f51e47b82570aef65d1aaf489624a50f91f8a7d91c",
+    "bytes": 2714
+  },
+  {
+    "path": "1_3_clustering/tabla_distritos_norm.csv",
+    "sha256": "f9c792f732ca8f4c85a64cfc0ec9f58b607808b4bc6d76a48f2fda2819c24fa6",
+    "bytes": 3249
+  },
+  {
+    "path": "1_3_clustering/verificacion_resultados.json",
+    "sha256": "dacacd6988133751f2c49bded029489f8adbb894c9ee7362874a44336f9a86a1",
+    "bytes": 17080
+  },
+  {
+    "path": "cleaning/limpieza_activaciones.ipynb",
+    "sha256": "3d629dadfdc3ab0f0cbaa22f8fdebd7d5574293cdf9d202ec652ed184c043118",
+    "bytes": 93000
+  },
+  {
+    "path": "cleaning/limpieza_hospitales.ipynb",
+    "sha256": "1de5b08ced8d48c7463b26c3d496bc3a94a88302351f73b2259e81655d0606c0",
+    "bytes": 23629
+  },
+  {
+    "path": "cleaning/limpieza_unidades_samur.ipynb",
+    "sha256": "1798f85110cc0d228a7c4a00f94423cfcfc8bd15dcb53ef375980a71c0f9d33d",
+    "bytes": 28028
+  },
+  {
+    "path": "data_clean/hospitales_limpio.csv",
+    "sha256": "8405da455bf8570f37e9c46ce05d6cacaf26844b5bcab69219d43fa892944017",
+    "bytes": 1754
+  },
+  {
+    "path": "data_viz/analisis_socioeconomico_distritos_y_activaciones.ipynb",
+    "sha256": "733fac2a64c9ff9fefc233577337b142e6f9b99e5e64eb021ec68450e3d87d00",
+    "bytes": 2925097
+  },
+  {
+    "path": "data_viz/graficos_eda/edad_pacientes.png",
+    "sha256": "d29255fb00ad2b1772ce3169adcabed2740d65fad0bb0850f23fa64ab369506d",
+    "bytes": 79275
+  }
+]

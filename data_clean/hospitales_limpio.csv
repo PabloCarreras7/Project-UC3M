@@ -6,12 +6,12 @@ hospital_id,nombre,nombre_corto,distrito,tipo,camas,urgencias_24h,helipad
 5,Hospital Universitario Ramón y Cajal,RAMON Y CAJAL,HORTALEZA,PUBLICO,1092,1,1
 6,Hospital Universitario La Princesa,LA PRINCESA,SALAMANCA,PUBLICO,480,1,0
 7,Hospital Universitario Puerta de Hierro,PUERTA DE HIERRO,MONCLOA-ARAVACA,PUBLICO,613,1,1
-8,Hospital Universitario Fundación Jiménez Díaz,FUNDACION JIMENEZ DIAZ,ARGANZUELA,PRIVADO-CONCERTADO,,1,0
+8,Hospital Universitario Fundación Jiménez Díaz,FUNDACION JIMENEZ DIAZ,MONCLOA-ARAVACA,PRIVADO-CONCERTADO,,1,0
 9,Hospital Universitario de Getafe,H. GETAFE,GETAFE,PUBLICO,560,1,1
 10,Hospital Universitario Severo Ochoa,SEVERO OCHOA,LEGANES,PRIVADO-CONCERTADO,425,1,0
 11,Hospital Universitario Príncipe de Asturias,PRINCIPE DE ASTURIAS,ALCALA DE HENARES,PRIVADO-CONCERTADO,,1,0
 12,Hospital Universitario de Móstoles,H. MOSTOLES,MOSTOLES,PUBLICO,,1,0
-13,Hospital Universitario Infanta Leonor,INFANTA LEONOR,VALLECAS,PUBLICO,260,1,0
+13,Hospital Universitario Infanta Leonor,INFANTA LEONOR,VILLA DE VALLECAS,PUBLICO,260,1,0
 14,Hospital Universitario del Henares,H. DEL HENARES,COSLADA,PUBLICO,310,1,0
 15,Hospital Universitario Infanta Sofía,INFANTA SOFIA,SAN SEBASTIAN DE LOS REYES,PUBLICO,283,1,1
 16,Hospital Universitario Rey Juan Carlos,REY JUAN CARLOS,MOSTOLES,PUBLICO,,1,0

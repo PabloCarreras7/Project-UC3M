@@ -1,0 +1,823 @@
+{
+  "variables": [
+    "densidad_hab_km2",
+    "renta_media_hogar",
+    "pct_mayores_65",
+    "pct_extranjeros",
+    "num_centros_salud",
+    "parques_m2_habitante",
+    "activaciones_por_1000hab",
+    "pct_prioridad_alta",
+    "tiempo_respuesta_medio_min"
+  ],
+  "distritos": [
+    "CENTRO",
+    "ARGANZUELA",
+    "RETIRO",
+    "SALAMANCA",
+    "CHAMARTIN",
+    "TETUAN",
+    "CHAMBERI",
+    "FUENCARRAL-EL PARDO",
+    "MONCLOA-ARAVACA",
+    "LATINA",
+    "CARABANCHEL",
+    "USERA",
+    "PUENTE DE VALLECAS",
+    "MORATALAZ",
+    "CIUDAD LINEAL",
+    "HORTALEZA",
+    "VILLAVERDE",
+    "VILLA DE VALLECAS",
+    "VICALVARO",
+    "SAN BLAS-CANILLEJAS",
+    "BARAJAS"
+  ],
+  "labels": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    2,
+    2,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    2,
+    0,
+    2,
+    2,
+    2,
+    2
+  ],
+  "silueta": 0.27471280137126486,
+  "siluetas": [
+    {
+      "distrito": "CIUDAD LINEAL",
+      "cluster": 0,
+      "cluster_nombre": "Denso y vulnerable",
+      "silueta": 0.032959105415481686
+    },
+    {
+      "distrito": "VILLAVERDE",
+      "cluster": 0,
+      "cluster_nombre": "Denso y vulnerable",
+      "silueta": 0.10823679165782096
+    },
+    {
+      "distrito": "ARGANZUELA",
+      "cluster": 0,
+      "cluster_nombre": "Denso y vulnerable",
+      "silueta": 0.12203768007590732
+    },
+    {
+      "distrito": "CENTRO",
+      "cluster": 0,
+      "cluster_nombre": "Denso y vulnerable",
+      "silueta": 0.142979372843094
+    },
+    {
+      "distrito": "LATINA",
+      "cluster": 0,
+      "cluster_nombre": "Denso y vulnerable",
+      "silueta": 0.32029821658282204
+    },
+    {
+      "distrito": "TETUAN",
+      "cluster": 0,
+      "cluster_nombre": "Denso y vulnerable",
+      "silueta": 0.33024018420102846
+    },
+    {
+      "distrito": "USERA",
+      "cluster": 0,
+      "cluster_nombre": "Denso y vulnerable",
+      "silueta": 0.4471714888967685
+    },
+    {
+      "distrito": "PUENTE DE VALLECAS",
+      "cluster": 0,
+      "cluster_nombre": "Denso y vulnerable",
+      "silueta": 0.47087907192532186
+    },
+    {
+      "distrito": "CARABANCHEL",
+      "cluster": 0,
+      "cluster_nombre": "Denso y vulnerable",
+      "silueta": 0.4773674596770191
+    },
+    {
+      "distrito": "MORATALAZ",
+      "cluster": 1,
+      "cluster_nombre": "Acomodado y envejecido",
+      "silueta": 0.13934049929755746
+    },
+    {
+      "distrito": "CHAMBERI",
+      "cluster": 1,
+      "cluster_nombre": "Acomodado y envejecido",
+      "silueta": 0.20999000413524388
+    },
+    {
+      "distrito": "RETIRO",
+      "cluster": 1,
+      "cluster_nombre": "Acomodado y envejecido",
+      "silueta": 0.4442065291421301
+    },
+    {
+      "distrito": "CHAMARTIN",
+      "cluster": 1,
+      "cluster_nombre": "Acomodado y envejecido",
+      "silueta": 0.4761921198985983
+    },
+    {
+      "distrito": "SALAMANCA",
+      "cluster": 1,
+      "cluster_nombre": "Acomodado y envejecido",
+      "silueta": 0.5025091599182631
+    },
+    {
+      "distrito": "MONCLOA-ARAVACA",
+      "cluster": 2,
+      "cluster_nombre": "Periférico y disperso",
+      "silueta": -0.030423044735961014
+    },
+    {
+      "distrito": "SAN BLAS-CANILLEJAS",
+      "cluster": 2,
+      "cluster_nombre": "Periférico y disperso",
+      "silueta": 0.04335507094189121
+    },
+    {
+      "distrito": "HORTALEZA",
+      "cluster": 2,
+      "cluster_nombre": "Periférico y disperso",
+      "silueta": 0.1418334117638547
+    },
+    {
+      "distrito": "FUENCARRAL-EL PARDO",
+      "cluster": 2,
+      "cluster_nombre": "Periférico y disperso",
+      "silueta": 0.29545343672293556
+    },
+    {
+      "distrito": "VILLA DE VALLECAS",
+      "cluster": 2,
+      "cluster_nombre": "Periférico y disperso",
+      "silueta": 0.33220421430502917
+    },
+    {
+      "distrito": "BARAJAS",
+      "cluster": 2,
+      "cluster_nombre": "Periférico y disperso",
+      "silueta": 0.36177725878507616
+    },
+    {
+      "distrito": "VICALVARO",
+      "cluster": 2,
+      "cluster_nombre": "Periférico y disperso",
+      "silueta": 0.4003607973466803
+    }
+  ],
+  "tiempos": [
+    {
+      "distrito": "ARGANZUELA",
+      "n_total": 7849,
+      "n_valido": 7189,
+      "mediana": 6.4,
+      "p90": 10.8,
+      "p99": 17.0,
+      "media": 6.811142022534428,
+      "minimo": 0.0,
+      "maximo": 43.3,
+      "faltantes": 660,
+      "pct_faltante": 8.408714485921774
+    },
+    {
+      "distrito": "BARAJAS",
+      "n_total": 2210,
+      "n_valido": 1926,
+      "mediana": 10.0,
+      "p90": 16.8,
+      "p99": 26.025000000000002,
+      "media": 10.718068535825545,
+      "minimo": 0.0,
+      "maximo": 42.8,
+      "faltantes": 284,
+      "pct_faltante": 12.850678733031673
+    },
+    {
+      "distrito": "CARABANCHEL",
+      "n_total": 10421,
+      "n_valido": 9400,
+      "mediana": 7.6,
+      "p90": 12.6,
+      "p99": 21.0,
+      "media": 8.055148936170212,
+      "minimo": 0.0,
+      "maximo": 57.0,
+      "faltantes": 1021,
+      "pct_faltante": 9.797524229920352
+    },
+    {
+      "distrito": "CENTRO",
+      "n_total": 21182,
+      "n_valido": 19258,
+      "mediana": 6.8,
+      "p90": 11.5,
+      "p99": 20.2,
+      "media": 7.198379894069997,
+      "minimo": 0.0,
+      "maximo": 52.3,
+      "faltantes": 1924,
+      "pct_faltante": 9.083183835331885
+    },
+    {
+      "distrito": "CHAMARTIN",
+      "n_total": 6785,
+      "n_valido": 6205,
+      "mediana": 6.6,
+      "p90": 11.4,
+      "p99": 18.3,
+      "media": 7.1714262691377915,
+      "minimo": 0.0,
+      "maximo": 61.2,
+      "faltantes": 580,
+      "pct_faltante": 8.548268238761974
+    },
+    {
+      "distrito": "CHAMBERI",
+      "n_total": 7001,
+      "n_valido": 6422,
+      "mediana": 6.0,
+      "p90": 10.5,
+      "p99": 17.8,
+      "media": 6.479710370601058,
+      "minimo": 0.0,
+      "maximo": 41.4,
+      "faltantes": 579,
+      "pct_faltante": 8.270247107556065
+    },
+    {
+      "distrito": "CIUDAD LINEAL",
+      "n_total": 6748,
+      "n_valido": 6152,
+      "mediana": 7.2,
+      "p90": 11.9,
+      "p99": 19.6,
+      "media": 7.671992847854356,
+      "minimo": 0.0,
+      "maximo": 33.2,
+      "faltantes": 596,
+      "pct_faltante": 8.832246591582692
+    },
+    {
+      "distrito": "FUENCARRAL-EL PARDO",
+      "n_total": 6099,
+      "n_valido": 5465,
+      "mediana": 8.9,
+      "p90": 14.7,
+      "p99": 24.8079999999999,
+      "media": 9.492113449222325,
+      "minimo": 0.0,
+      "maximo": 74.5,
+      "faltantes": 634,
+      "pct_faltante": 10.395146745368093
+    },
+    {
+      "distrito": "HORTALEZA",
+      "n_total": 4832,
+      "n_valido": 4385,
+      "mediana": 8.2,
+      "p90": 13.4,
+      "p99": 22.447999999999954,
+      "media": 8.579042189281642,
+      "minimo": 0.0,
+      "maximo": 57.6,
+      "faltantes": 447,
+      "pct_faltante": 9.250827814569536
+    },
+    {
+      "distrito": "LATINA",
+      "n_total": 8314,
+      "n_valido": 7478,
+      "mediana": 7.45,
+      "p90": 13.4,
+      "p99": 20.1,
+      "media": 8.11127306766515,
+      "minimo": 0.0,
+      "maximo": 83.2,
+      "faltantes": 836,
+      "pct_faltante": 10.055328361799374
+    },
+    {
+      "distrito": "MONCLOA-ARAVACA",
+      "n_total": 7995,
+      "n_valido": 7238,
+      "mediana": 7.0,
+      "p90": 13.0,
+      "p99": 22.563000000000013,
+      "media": 7.683545178226029,
+      "minimo": 0.0,
+      "maximo": 66.0,
+      "faltantes": 757,
+      "pct_faltante": 9.468417761100687
+    },
+    {
+      "distrito": "MORATALAZ",
+      "n_total": 2710,
+      "n_valido": 2492,
+      "mediana": 7.15,
+      "p90": 11.8,
+      "p99": 19.409000000000013,
+      "media": 7.764727126805779,
+      "minimo": 0.0,
+      "maximo": 42.2,
+      "faltantes": 218,
+      "pct_faltante": 8.044280442804428
+    },
+    {
+      "distrito": "PUENTE DE VALLECAS",
+      "n_total": 9698,
+      "n_valido": 8835,
+      "mediana": 7.0,
+      "p90": 12.0,
+      "p99": 18.7,
+      "media": 7.507685342388228,
+      "minimo": 0.0,
+      "maximo": 55.0,
+      "faltantes": 863,
+      "pct_faltante": 8.89874200866158
+    },
+    {
+      "distrito": "RETIRO",
+      "n_total": 5184,
+      "n_valido": 4712,
+      "mediana": 6.2,
+      "p90": 10.8,
+      "p99": 17.6,
+      "media": 6.540428692699491,
+      "minimo": 0.0,
+      "maximo": 53.0,
+      "faltantes": 472,
+      "pct_faltante": 9.104938271604938
+    },
+    {
+      "distrito": "SALAMANCA",
+      "n_total": 7523,
+      "n_valido": 6864,
+      "mediana": 6.1,
+      "p90": 10.6,
+      "p99": 16.7,
+      "media": 6.511276223776224,
+      "minimo": 0.0,
+      "maximo": 87.2,
+      "faltantes": 659,
+      "pct_faltante": 8.759803269972085
+    },
+    {
+      "distrito": "SAN BLAS-CANILLEJAS",
+      "n_total": 6080,
+      "n_valido": 5533,
+      "mediana": 7.7,
+      "p90": 13.480000000000018,
+      "p99": 23.2,
+      "media": 8.457997469727092,
+      "minimo": 0.0,
+      "maximo": 86.9,
+      "faltantes": 547,
+      "pct_faltante": 8.99671052631579
+    },
+    {
+      "distrito": "TETUAN",
+      "n_total": 7957,
+      "n_valido": 7290,
+      "mediana": 6.1,
+      "p90": 11.3,
+      "p99": 23.5,
+      "media": 6.884650205761317,
+      "minimo": 0.0,
+      "maximo": 57.5,
+      "faltantes": 667,
+      "pct_faltante": 8.382556239788865
+    },
+    {
+      "distrito": "USERA",
+      "n_total": 6149,
+      "n_valido": 5634,
+      "mediana": 7.4,
+      "p90": 12.6,
+      "p99": 20.867000000000008,
+      "media": 7.949112531061413,
+      "minimo": 0.0,
+      "maximo": 68.1,
+      "faltantes": 515,
+      "pct_faltante": 8.37534558464791
+    },
+    {
+      "distrito": "VICALVARO",
+      "n_total": 2481,
+      "n_valido": 2249,
+      "mediana": 9.0,
+      "p90": 15.2,
+      "p99": 26.8,
+      "media": 9.815695864828813,
+      "minimo": 0.0,
+      "maximo": 96.7,
+      "faltantes": 232,
+      "pct_faltante": 9.351068117694478
+    },
+    {
+      "distrito": "VILLA DE VALLECAS",
+      "n_total": 3805,
+      "n_valido": 3390,
+      "mediana": 9.5,
+      "p90": 14.4,
+      "p99": 24.011000000000013,
+      "media": 10.011769911504425,
+      "minimo": 0.0,
+      "maximo": 55.8,
+      "faltantes": 415,
+      "pct_faltante": 10.90670170827858
+    },
+    {
+      "distrito": "VILLAVERDE",
+      "n_total": 4943,
+      "n_valido": 4423,
+      "mediana": 8.6,
+      "p90": 14.2,
+      "p99": 22.0,
+      "media": 9.053470495139045,
+      "minimo": 0.0,
+      "maximo": 53.4,
+      "faltantes": 520,
+      "pct_faltante": 10.519927169734979
+    }
+  ],
+  "dbscan": [
+    {
+      "eps": 0.2,
+      "min_samples": 2,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.3,
+      "min_samples": 2,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.4,
+      "min_samples": 2,
+      "grupos": 3,
+      "ruido": 15,
+      "tamanos": "[2, 2, 2]",
+      "silueta_sin_ruido": 0.5390026929414473
+    },
+    {
+      "eps": 0.5,
+      "min_samples": 2,
+      "grupos": 4,
+      "ruido": 11,
+      "tamanos": "[2, 3, 3, 2]",
+      "silueta_sin_ruido": 0.3969243429287979
+    },
+    {
+      "eps": 0.6,
+      "min_samples": 2,
+      "grupos": 3,
+      "ruido": 6,
+      "tamanos": "[10, 3, 2]",
+      "silueta_sin_ruido": 0.3898519189964361
+    },
+    {
+      "eps": 0.7,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 3,
+      "tamanos": "[18]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.8,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 2,
+      "tamanos": "[19]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.9,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "[20]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.0,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "[20]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.1,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "[21]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.2,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "[21]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.2,
+      "min_samples": 3,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.3,
+      "min_samples": 3,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.4,
+      "min_samples": 3,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.5,
+      "min_samples": 3,
+      "grupos": 2,
+      "ruido": 15,
+      "tamanos": "[3, 3]",
+      "silueta_sin_ruido": 0.34812468001565966
+    },
+    {
+      "eps": 0.6,
+      "min_samples": 3,
+      "grupos": 2,
+      "ruido": 8,
+      "tamanos": "[10, 3]",
+      "silueta_sin_ruido": 0.44244818348918274
+    },
+    {
+      "eps": 0.7,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 3,
+      "tamanos": "[18]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.8,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 2,
+      "tamanos": "[19]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.9,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "[20]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.0,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "[20]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.1,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "[21]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.2,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "[21]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.2,
+      "min_samples": 4,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.3,
+      "min_samples": 4,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.4,
+      "min_samples": 4,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.5,
+      "min_samples": 4,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.6,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 13,
+      "tamanos": "[8]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.7,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 3,
+      "tamanos": "[18]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.8,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 3,
+      "tamanos": "[18]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.9,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "[20]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.0,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "[20]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.1,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "[21]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.2,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "[21]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.2,
+      "min_samples": 5,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.3,
+      "min_samples": 5,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.4,
+      "min_samples": 5,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.5,
+      "min_samples": 5,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "[]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.6,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 15,
+      "tamanos": "[6]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.7,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 6,
+      "tamanos": "[15]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.8,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 3,
+      "tamanos": "[18]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 0.9,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "[20]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.0,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "[20]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.1,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "[21]",
+      "silueta_sin_ruido": NaN
+    },
+    {
+      "eps": 1.2,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "[21]",
+      "silueta_sin_ruido": NaN
+    }
+  ],
+  "cluster_totales": {
+    "0": 83261,
+    "1": 29203,
+    "2": 33502
+  },
+  "n_activaciones": 145966
+}

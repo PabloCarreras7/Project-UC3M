@@ -1,0 +1,803 @@
+{
+  "k": [
+    {
+      "modelo": "Con edad (10D)",
+      "k": 2,
+      "inercia": 10.71426057625,
+      "silueta_kmeans": 0.23700798466649625,
+      "silueta_ward": 0.2990061468553771
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "k": 3,
+      "inercia": 7.430264022333333,
+      "silueta_kmeans": 0.26830972157612437,
+      "silueta_ward": 0.26187076635817436
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "k": 4,
+      "inercia": 6.185711882666667,
+      "silueta_kmeans": 0.21383242737440197,
+      "silueta_ward": 0.227660419851625
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "k": 5,
+      "inercia": 5.22707176047619,
+      "silueta_kmeans": 0.22079119629653088,
+      "silueta_ward": 0.22667671826920413
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "k": 6,
+      "inercia": 4.280518334166667,
+      "silueta_kmeans": 0.21203217100021748,
+      "silueta_ward": 0.18739826577198496
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "k": 7,
+      "inercia": 3.5639945581666668,
+      "silueta_kmeans": 0.21593871707745052,
+      "silueta_ward": 0.1867465170592449
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "k": 8,
+      "inercia": 3.018353964,
+      "silueta_kmeans": 0.20680855532595435,
+      "silueta_ward": 0.19834223390735814
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "k": 2,
+      "inercia": 9.796872308269231,
+      "silueta_kmeans": 0.2510724838052668,
+      "silueta_ward": 0.30382012786871865
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "k": 3,
+      "inercia": 6.69643720926984,
+      "silueta_kmeans": 0.27471280137126486,
+      "silueta_ward": 0.2543076503983368
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "k": 4,
+      "inercia": 5.592795264404761,
+      "silueta_kmeans": 0.23485742624879097,
+      "silueta_ward": 0.20585929348381568
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "k": 5,
+      "inercia": 4.549583334404762,
+      "silueta_kmeans": 0.237756055860346,
+      "silueta_ward": 0.2063083889768371
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "k": 6,
+      "inercia": 3.7758259844047624,
+      "silueta_kmeans": 0.22911962631200838,
+      "silueta_ward": 0.21781203863116658
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "k": 7,
+      "inercia": 3.067590250666668,
+      "silueta_kmeans": 0.22783257760948689,
+      "silueta_ward": 0.20789091500604684
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "k": 8,
+      "inercia": 2.636087772333334,
+      "silueta_kmeans": 0.23378278732744617,
+      "silueta_ward": 0.2079146890591518
+    }
+  ],
+  "robustez": [
+    {
+      "modelo": "Con edad (10D)",
+      "prueba": "Semillas mínimo",
+      "ARI": 0.8478260869565217
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "prueba": "Semillas mediana",
+      "ARI": 0.8478260869565217
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "prueba": "Sin Centro",
+      "ARI": 1.0
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "prueba": "Sin4 imputados",
+      "ARI": 1.0
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "prueba": "Sin renta ni mayores",
+      "ARI": 0.46153846153846156
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "prueba": "Sin densidad",
+      "ARI": 1.0
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "prueba": "Sin tiempo",
+      "ARI": 0.7292418772563177
+    },
+    {
+      "modelo": "Con edad (10D)",
+      "prueba": "Ward",
+      "ARI": 0.6917808219178082
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "prueba": "Semillas mínimo",
+      "ARI": 1.0
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "prueba": "Semillas mediana",
+      "ARI": 1.0
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "prueba": "Sin Centro",
+      "ARI": 1.0
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "prueba": "Sin4 imputados",
+      "ARI": 0.592814371257485
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "prueba": "Sin renta ni mayores",
+      "ARI": 0.732739420935412
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "prueba": "Sin densidad",
+      "ARI": 0.6084853370956363
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "prueba": "Sin tiempo",
+      "ARI": 1.0
+    },
+    {
+      "modelo": "Sin edad (9D)",
+      "prueba": "Ward",
+      "ARI": 0.33133364097831103
+    }
+  ],
+  "distritos": [
+    {
+      "distrito": "CENTRO",
+      "renta_media_hogar": 42831.0,
+      "pct_mayores_65": 22.1,
+      "edad_media_paciente": 50.07,
+      "perfil10D": "Denso y vulnerable",
+      "perfil9D": "Denso y vulnerable",
+      "cambia": false
+    },
+    {
+      "distrito": "ARGANZUELA",
+      "renta_media_hogar": 39876.0,
+      "pct_mayores_65": 18.5,
+      "edad_media_paciente": 49.27,
+      "perfil10D": "Denso y vulnerable",
+      "perfil9D": "Denso y vulnerable",
+      "cambia": false
+    },
+    {
+      "distrito": "RETIRO",
+      "renta_media_hogar": 61604.0,
+      "pct_mayores_65": 25.3,
+      "edad_media_paciente": 49.14,
+      "perfil10D": "Acomodado y envejecido",
+      "perfil9D": "Acomodado y envejecido",
+      "cambia": false
+    },
+    {
+      "distrito": "SALAMANCA",
+      "renta_media_hogar": 71432.0,
+      "pct_mayores_65": 26.8,
+      "edad_media_paciente": 49.33,
+      "perfil10D": "Acomodado y envejecido",
+      "perfil9D": "Acomodado y envejecido",
+      "cambia": false
+    },
+    {
+      "distrito": "CHAMARTIN",
+      "renta_media_hogar": 62145.0,
+      "pct_mayores_65": 25.2,
+      "edad_media_paciente": 49.02,
+      "perfil10D": "Acomodado y envejecido",
+      "perfil9D": "Acomodado y envejecido",
+      "cambia": false
+    },
+    {
+      "distrito": "TETUAN",
+      "renta_media_hogar": 35678.0,
+      "pct_mayores_65": 17.8,
+      "edad_media_paciente": 49.94,
+      "perfil10D": "Denso y vulnerable",
+      "perfil9D": "Denso y vulnerable",
+      "cambia": false
+    },
+    {
+      "distrito": "CHAMBERI",
+      "renta_media_hogar": 51234.0,
+      "pct_mayores_65": 23.5,
+      "edad_media_paciente": 49.49,
+      "perfil10D": "Acomodado y envejecido",
+      "perfil9D": "Acomodado y envejecido",
+      "cambia": false
+    },
+    {
+      "distrito": "FUENCARRAL-EL PARDO",
+      "renta_media_hogar": 48765.0,
+      "pct_mayores_65": 16.2,
+      "edad_media_paciente": 49.52,
+      "perfil10D": "Periférico y disperso",
+      "perfil9D": "Periférico y disperso",
+      "cambia": false
+    },
+    {
+      "distrito": "MONCLOA-ARAVACA",
+      "renta_media_hogar": 55432.0,
+      "pct_mayores_65": 19.8,
+      "edad_media_paciente": 49.07,
+      "perfil10D": "Acomodado y envejecido",
+      "perfil9D": "Periférico y disperso",
+      "cambia": true
+    },
+    {
+      "distrito": "LATINA",
+      "renta_media_hogar": 31245.0,
+      "pct_mayores_65": 20.5,
+      "edad_media_paciente": 49.55,
+      "perfil10D": "Denso y vulnerable",
+      "perfil9D": "Denso y vulnerable",
+      "cambia": false
+    },
+    {
+      "distrito": "CARABANCHEL",
+      "renta_media_hogar": 28976.0,
+      "pct_mayores_65": 18.2,
+      "edad_media_paciente": 49.38,
+      "perfil10D": "Denso y vulnerable",
+      "perfil9D": "Denso y vulnerable",
+      "cambia": false
+    },
+    {
+      "distrito": "USERA",
+      "renta_media_hogar": 26543.0,
+      "pct_mayores_65": 15.6,
+      "edad_media_paciente": 49.24,
+      "perfil10D": "Denso y vulnerable",
+      "perfil9D": "Denso y vulnerable",
+      "cambia": false
+    },
+    {
+      "distrito": "PUENTE DE VALLECAS",
+      "renta_media_hogar": 24567.0,
+      "pct_mayores_65": 14.2,
+      "edad_media_paciente": 49.7,
+      "perfil10D": "Denso y vulnerable",
+      "perfil9D": "Denso y vulnerable",
+      "cambia": false
+    },
+    {
+      "distrito": "MORATALAZ",
+      "renta_media_hogar": 35678.0,
+      "pct_mayores_65": 22.8,
+      "edad_media_paciente": 48.67,
+      "perfil10D": "Acomodado y envejecido",
+      "perfil9D": "Acomodado y envejecido",
+      "cambia": false
+    },
+    {
+      "distrito": "CIUDAD LINEAL",
+      "renta_media_hogar": 42633.0,
+      "pct_mayores_65": 19.5,
+      "edad_media_paciente": 49.36,
+      "perfil10D": "Denso y vulnerable",
+      "perfil9D": "Denso y vulnerable",
+      "cambia": false
+    },
+    {
+      "distrito": "HORTALEZA",
+      "renta_media_hogar": 45678.0,
+      "pct_mayores_65": 15.8,
+      "edad_media_paciente": 50.01,
+      "perfil10D": "Periférico y disperso",
+      "perfil9D": "Periférico y disperso",
+      "cambia": false
+    },
+    {
+      "distrito": "VILLAVERDE",
+      "renta_media_hogar": 23456.0,
+      "pct_mayores_65": 16.5,
+      "edad_media_paciente": 49.66,
+      "perfil10D": "Denso y vulnerable",
+      "perfil9D": "Denso y vulnerable",
+      "cambia": false
+    },
+    {
+      "distrito": "VILLA DE VALLECAS",
+      "renta_media_hogar": 28765.0,
+      "pct_mayores_65": 12.8,
+      "edad_media_paciente": 49.68,
+      "perfil10D": "Periférico y disperso",
+      "perfil9D": "Periférico y disperso",
+      "cambia": false
+    },
+    {
+      "distrito": "VICALVARO",
+      "renta_media_hogar": 32456.0,
+      "pct_mayores_65": 11.2,
+      "edad_media_paciente": 49.57,
+      "perfil10D": "Periférico y disperso",
+      "perfil9D": "Periférico y disperso",
+      "cambia": false
+    },
+    {
+      "distrito": "SAN BLAS-CANILLEJAS",
+      "renta_media_hogar": 34567.0,
+      "pct_mayores_65": 18.5,
+      "edad_media_paciente": 48.92,
+      "perfil10D": "Denso y vulnerable",
+      "perfil9D": "Periférico y disperso",
+      "cambia": true
+    },
+    {
+      "distrito": "BARAJAS",
+      "renta_media_hogar": 52345.0,
+      "pct_mayores_65": 17.2,
+      "edad_media_paciente": 50.7,
+      "perfil10D": "Periférico y disperso",
+      "perfil9D": "Periférico y disperso",
+      "cambia": false
+    }
+  ],
+  "resumen9": [
+    {
+      "cluster9": 0,
+      "distritos": 9,
+      "activaciones": 83261,
+      "pct_activaciones": 57.04136579751449
+    },
+    {
+      "cluster9": 1,
+      "distritos": 5,
+      "activaciones": 29203,
+      "pct_activaciones": 20.006713892276284
+    },
+    {
+      "cluster9": 2,
+      "distritos": 7,
+      "activaciones": 33502,
+      "pct_activaciones": 22.951920310209225
+    }
+  ],
+  "perfil9": [
+    {
+      "index": "Denso y vulnerable",
+      "renta_media_hogar": 32867.222,
+      "tasa_paro": 12.767,
+      "indice_vulnerabilidad": 0.593,
+      "pct_mayores_65": 18.1,
+      "pct_extranjeros": 20.522,
+      "densidad_hab_km2": 18843.267,
+      "activaciones_por_1000hab": 51.877,
+      "pct_prioridad_alta": 36.529,
+      "edad_media_paciente": 49.574,
+      "tiempo_respuesta_medio_min": 7.693
+    },
+    {
+      "index": "Acomodado y envejecido",
+      "renta_media_hogar": 56418.6,
+      "tasa_paro": 7.1,
+      "indice_vulnerabilidad": 0.256,
+      "pct_mayores_65": 24.72,
+      "pct_extranjeros": 11.72,
+      "densidad_hab_km2": 21956.68,
+      "activaciones_por_1000hab": 43.93,
+      "pct_prioridad_alta": 42.324,
+      "edad_media_paciente": 49.13,
+      "tiempo_respuesta_medio_min": 6.892
+    },
+    {
+      "index": "Periférico y disperso",
+      "renta_media_hogar": 42572.571,
+      "tasa_paro": 10.143,
+      "indice_vulnerabilidad": 0.436,
+      "pct_mayores_65": 15.929,
+      "pct_extranjeros": 14.886,
+      "densidad_hab_km2": 3319.943,
+      "activaciones_por_1000hab": 38.023,
+      "pct_prioridad_alta": 45.416,
+      "edad_media_paciente": 49.639,
+      "tiempo_respuesta_medio_min": 9.251
+    }
+  ],
+  "dbscan9": [
+    {
+      "eps": 0.2,
+      "min_samples": 2,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.2,
+      "min_samples": 3,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.2,
+      "min_samples": 4,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.2,
+      "min_samples": 5,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.3,
+      "min_samples": 2,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.3,
+      "min_samples": 3,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.3,
+      "min_samples": 4,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.3,
+      "min_samples": 5,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.4,
+      "min_samples": 2,
+      "grupos": 3,
+      "ruido": 15,
+      "tamanos": "2,2,2",
+      "silueta_sin_ruido": 0.5390026929414473
+    },
+    {
+      "eps": 0.4,
+      "min_samples": 3,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.4,
+      "min_samples": 4,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.4,
+      "min_samples": 5,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.5,
+      "min_samples": 2,
+      "grupos": 4,
+      "ruido": 11,
+      "tamanos": "2,3,3,2",
+      "silueta_sin_ruido": 0.3969243429287979
+    },
+    {
+      "eps": 0.5,
+      "min_samples": 3,
+      "grupos": 2,
+      "ruido": 15,
+      "tamanos": "3,3",
+      "silueta_sin_ruido": 0.34812468001565966
+    },
+    {
+      "eps": 0.5,
+      "min_samples": 4,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.5,
+      "min_samples": 5,
+      "grupos": 0,
+      "ruido": 21,
+      "tamanos": "",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.6,
+      "min_samples": 2,
+      "grupos": 3,
+      "ruido": 6,
+      "tamanos": "10,3,2",
+      "silueta_sin_ruido": 0.3898519189964361
+    },
+    {
+      "eps": 0.6,
+      "min_samples": 3,
+      "grupos": 2,
+      "ruido": 8,
+      "tamanos": "10,3",
+      "silueta_sin_ruido": 0.44244818348918274
+    },
+    {
+      "eps": 0.6,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 13,
+      "tamanos": "8",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.6,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 15,
+      "tamanos": "6",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.7,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 3,
+      "tamanos": "18",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.7,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 3,
+      "tamanos": "18",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.7,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 3,
+      "tamanos": "18",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.7,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 6,
+      "tamanos": "15",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.8,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 2,
+      "tamanos": "19",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.8,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 2,
+      "tamanos": "19",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.8,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 3,
+      "tamanos": "18",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.8,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 3,
+      "tamanos": "18",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.9,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "20",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.9,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "20",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.9,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "20",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 0.9,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "20",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.0,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "20",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.0,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "20",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.0,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "20",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.0,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 1,
+      "tamanos": "20",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.1,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "21",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.1,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "21",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.1,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "21",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.1,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "21",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.2,
+      "min_samples": 2,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "21",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.2,
+      "min_samples": 3,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "21",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.2,
+      "min_samples": 4,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "21",
+      "silueta_sin_ruido": ""
+    },
+    {
+      "eps": 1.2,
+      "min_samples": 5,
+      "grupos": 1,
+      "ruido": 0,
+      "tamanos": "21",
+      "silueta_sin_ruido": ""
+    }
+  ],
+  "ari10vs9": 0.7292418772563177,
+  "variables9": [
+    "densidad_hab_km2",
+    "renta_media_hogar",
+    "pct_mayores_65",
+    "pct_extranjeros",
+    "num_centros_salud",
+    "parques_m2_habitante",
+    "activaciones_por_1000hab",
+    "pct_prioridad_alta",
+    "tiempo_respuesta_medio_min"
+  ],
+  "silueta9": 0.27471280137126486
+}

@@ -22,13 +22,13 @@ Ejecutar de arriba abajo desde la raíz del repo o desde `1_3_clustering/`. Nece
 - `README.md`: este registro completo.
 - `cruces_datasets.ipynb`: cruces completos y generación de tablas.
 - `segmentacion_final_distritos.ipynb`: análisis socioeconómico integral ejecutado.
-- `tabla_distritos.csv`, `tabla_distritos_norm.csv`: salidas intermedias reproducibles, no análisis alternativos.
+- `datos/tabla_distritos.csv`, `datos/tabla_distritos_norm.csv`: salidas intermedias reproducibles, no análisis alternativos.
 - `graficos_cierre_9D/`: resultados del modelo principal y comparaciones finales.
 - `graficos_recorrido_eda/`: gráficos regenerados de la exploración integrada.
 - `graficos_cierre/`: exportaciones 10D previas, conservadas sin sobrescribir.
 - `archivo/version_remota_dff7b22/`: fuentes originales de la rama, conservadas byte a byte. Incluye main.ipynb, que la lectura remota devuelve vacío.
-- `archivo/antes_consolidacion_2026-11-17/`: copia íntegra de los notebooks/documentación preparados antes de esta consolidación. No es el punto de entrada. Para reproducir un notebook archivado se debe configurar el directorio de trabajo en su ubicación original: `1_3_clustering/` para baseline/cruces/cierre y `data_viz/` para la exploración histórica.
-- `comparacion_edad.json`, `verificacion_resultados.json` y el GeoJSON: auxiliares, no versiones finales paralelas.
+- `archivo/antes_consolidacion_2026-11-17/`: copia íntegra de los notebooks/documentación preparados antes de esta consolidación. No es el punto de entrada. Para reproducir un notebook archivado se debe configurar el directorio de trabajo en su ubicación original: `1_3_clustering/` para baseline/cruces/cierre y `data_viz/` para la exploración histórica. Las salidas y auxiliares se movieron a `datos/` el 17-11-2026: para reproducir un notebook archivado, copiar esos archivos junto a él o usar el diseño anterior del historial git.
+- `datos/comparacion_edad.json`, `datos/verificacion_resultados.json` y `datos/distritos_madrid.geojson`: auxiliares, no versiones finales paralelas.
 - PPTX/PDF: derivados del análisis ya revisado; mantienen los resultados 9D/10D, no sustituyen el recorrido completo del notebook.
 
 No se elimina trabajo. Las dos carpetas de archivo distinguen la fuente remota original de los cambios preparados antes de consolidar; la integración solo adapta rutas y rótulos, no el algoritmo ni los datos. El original EDA común de `data_viz/` no se mueve porque está fuera de la carpeta del caso; queda como fuente histórica y toda su exploración está integrada aquí.
@@ -43,8 +43,8 @@ Caso 1.3 del proyecto. El objetivo es agrupar los 21 distritos de Madrid según 
 - `limpieza_socioeconomico.ipynb` -> `socioeconomico_limpio.csv` (21 filas)
 - `limpieza_distritos.ipynb` -> `distritos_limpio.csv` (21 filas)
 - `limpieza_activaciones.ipynb` -> `activaciones_limpio.csv` (146.567 filas, 13 columnas)
-- `cruces_datasets.ipynb` -> `tabla_distritos.csv` (21 filas, una por distrito) y `tabla_distritos_norm.csv` (la misma tabla con las columnas numéricas en escala 0-1: la que entra al clustering)
-- `socioeconomico_normalizado.csv`: el socioeconómico limpio con las columnas numéricas en escala 0-1
+- `cruces_datasets.ipynb` -> `datos/tabla_distritos.csv` (21 filas, una por distrito) y `datos/tabla_distritos_norm.csv` (la misma tabla con las columnas numéricas en escala 0-1: la que entra al clustering)
+- `datos/socioeconomico_normalizado.csv`: el socioeconómico limpio con las columnas numéricas en escala 0-1
 
 ## Orden de ejecución
 
@@ -217,11 +217,11 @@ Material de cierre de la parte 1.3. El baseline `clustering_distritos.ipynb` se 
 
 El notebook final contiene carga y comprobaciones de integridad, selección de variables, escalado min-max, comparación KMeans/Ward/DBSCAN, elección de k, perfiles y mapas, robustez, análisis socioeconómico directo y conclusiones. Se ejecuta de arriba abajo después del notebook de cruces. Las comprobaciones `assert` detienen la ejecución si las entradas no cumplen lo esperado.
 
-- Entradas: `tabla_distritos.csv`, `tabla_distritos_norm.csv`, `data_clean/activaciones_limpio.csv` y `data_clean/tipos_emergencia_clean.csv`.
+- Entradas: `datos/tabla_distritos.csv`, `datos/tabla_distritos_norm.csv`, `data_clean/activaciones_limpio.csv` y `data_clean/tipos_emergencia_clean.csv`.
 - `graficos_cierre_9D/`: figuras principales 00-20, sensibilidad, diagnóstico de edad y comparación controlada.
 - `graficos_cierre/`: exportaciones históricas 10D, conservadas sin sobrescribir.
-- `distritos_madrid.geojson`: límites oficiales del Ayuntamiento de Madrid. El notebook los descarga si faltan.
-- `comparacion_edad.json` y `verificacion_resultados.json`: resultados de comparación y comprobación.
+- `datos/distritos_madrid.geojson`: límites oficiales del Ayuntamiento de Madrid. El notebook los descarga si faltan.
+- `datos/comparacion_edad.json` y `datos/verificacion_resultados.json`: resultados de comparación y comprobación.
 
 ## Decisiones
 
@@ -251,7 +251,7 @@ Registro del recorrido histórico integrado en el notebook socioeconómico. Las 
 
 Avance de seguimiento: primer intento de clustering de los 21 distritos de Madrid para la segmentación socio-sanitaria. **Es un baseline exploratorio para discutir en el grupo, no un modelo validado ni una conclusión**: la separación entre grupos es modesta (ver las siluetas) y los perfiles de abajo son provisionales.
 
-- **Entrada:** `tabla_distritos.csv` (valores reales) y `tabla_distritos_norm.csv` (misma tabla normalizada min-max 0-1). Ambas salen de `cruces_datasets.ipynb`.
+- **Entrada:** `datos/tabla_distritos.csv` (valores reales) y `datos/tabla_distritos_norm.csv` (misma tabla normalizada min-max 0-1). Ambas salen de `cruces_datasets.ipynb`.
 - **Por qué normalizado:** k-means usa distancias euclídeas, así que sin escalar la renta (~40.000) aplastaría a los porcentajes (~0-30). La normalización min-max ya estaba hecha y validada en la fase de limpieza.
 - **Reproducible:** `n_init=50` y `random_state=42` en todos los k-means; versiones al final.
 
@@ -358,7 +358,7 @@ Análisis exploratorio de los datos limpios del caso 1.3, pensado para la presen
 
 La sección de exploración integrada reúne todo el análisis gráfico: los 12 gráficos de las secciones 1 a 9 y los 3 mapas de la sección 10. Cada gráfico lleva su explicación: qué se pregunta, qué se ve y qué no se puede concluir. La sección 11 resume los insights para los slides y la 12 recoge las limitaciones.
 
-- **Datos usados:** `activaciones_limpio.csv` (146.567 activaciones del SAMUR en 2024, ya limpio en `data_clean/`, con el tipo y la prioridad del catálogo aplicados), `tabla_distritos.csv` (21 distritos con perfil social, demanda y oferta, en `1_3_clustering/`) y `tipos_emergencia_clean.csv` (catálogo canónico de tipos del caso 2.2, en `data_clean/`; la sección 4 solo añade la categoría, porque el tipo ya viene cruzado de la limpieza). Para los mapas, además, los límites oficiales de los distritos del Ayuntamiento de Madrid (se descargan al ejecutar).
+- **Datos usados:** `activaciones_limpio.csv` (146.567 activaciones del SAMUR en 2024, ya limpio en `data_clean/`, con el tipo y la prioridad del catálogo aplicados), `tabla_distritos.csv` (21 distritos con perfil social, demanda y oferta, en `1_3_clustering/datos/`) y `tipos_emergencia_clean.csv` (catálogo canónico de tipos del caso 2.2, en `data_clean/`; la sección 4 solo añade la categoría, porque el tipo ya viene cruzado de la limpieza). Para los mapas, además, los límites oficiales de los distritos del Ayuntamiento de Madrid (se descargan al ejecutar).
 - **Qué hace:** solo explorar y visualizar. No modifica ningún CSV ni rehace la limpieza.
 - **Gráficos:** cada uno se guarda como PNG en la subcarpeta `graficos_eda/`, listo para meter en los slides.
 - **Ojo al interpretar:** son 21 distritos y las correlaciones entre distritos no prueban causalidad. Los mapas son descriptivos: los terciles del mapa bivariante no son el clustering. Las dudas concretas están apuntadas al final (sección "Limitaciones").

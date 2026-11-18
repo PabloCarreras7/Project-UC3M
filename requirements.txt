@@ -5,6 +5,9 @@ scikit-learn
 matplotlib
 seaborn
 lightgbm
+catboost
+imbalanced-learn
+interpret
 shap
 jupyter
 python-dotenv

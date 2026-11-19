@@ -69,7 +69,7 @@ def main():
     box(ax, 1.75, 4.85, 3.8, 0.65, "PatchToolCalls · before_agent",
         "repara llamadas a herramientas sin respuesta", fill=GRAPH_FILL, edge=GRAPH_EDGE)
     box(ax, 1.75, 3.55, 3.8, 1.1, "model", "Claude Opus 5.5 · adaptive thinking, effort medium\n"
-        "system prompt: buscar antes de responder,\nno contar filas, responder en JSON",
+        "system prompt: buscar antes de responder, filtrar,\nno contar filas, responder en JSON",
         fill=GRAPH_FILL, edge=GRAPH_EDGE, lw=1.8, title_size=11)
     box(ax, 2.55, 2.9, 2.2, 0.42, "__end__", fill="#d8d2fd", edge=LINE, round_=0.2)
 
@@ -81,18 +81,18 @@ def main():
     arrow(ax, (1.75, 3.8), (1.75, 4.4), dashed=True, rad=-1.6)
     ax.text(0.4, 4.1, "salto de\nmiddleware", fontsize=7.2, color=MUTED, va="center")
 
-    box(ax, 7.4, 3.55, 3.1, 1.6, "tools", "buscar_descripciones(pregunta, k=5)\n"
+    box(ax, 7.4, 3.55, 3.1, 1.6, "tools", "buscar_descripciones(pregunta, k=5,\nfiltros exactos por campo)\n"
         "+ herramientas de deepagents\n(ficheros, task)", fill=TOOL_FILL, edge=TOOL_EDGE, lw=1.6,
         title_size=11)
     arrow(ax, (5.55, 4.4), (7.4, 4.75), text="tool call", dashed=True, text_xy=(6.47, 4.85))
     arrow(ax, (7.4, 3.85), (5.55, 3.85), text="informes", dashed=True, text_xy=(6.47, 3.72))
 
     # Recuperación (fuera del grafo)
-    box(ax, 7.4, 1.45, 3.1, 1.05, "Pinecone", "índice accidentes-descripcion · 1.860 descripciones\n"
+    box(ax, 7.4, 1.45, 3.1, 1.05, "Pinecone", "índice accidentes-descripcion · 1.962 partes\n"
         "Qwen3-Embedding-0.6B (1024 d)", fill=DATA_FILL, edge=DATA_EDGE)
-    arrow(ax, (8.95, 3.55), (8.95, 2.5), text="similarity_search top-5", text_xy=(8.95, 3.0))
+    arrow(ax, (8.95, 3.55), (8.95, 2.5), text="similarity_search top-k + filtro", text_xy=(8.95, 3.0))
     box(ax, 7.4, 0.1, 3.1, 0.95, "data_clean/accidentes_clean.csv",
-        "embeddings.py: un documento por parte\nmetadatos: numero_incidencia, distrito, fecha",
+        "embeddings.py: un documento por parte\ntexto: resumen + descripción · metadatos: la fila",
         fill="white", edge=DATA_EDGE, title_size=8.8)
     arrow(ax, (8.95, 1.05), (8.95, 1.45), text="indexación", text_xy=(9.65, 1.25))
 

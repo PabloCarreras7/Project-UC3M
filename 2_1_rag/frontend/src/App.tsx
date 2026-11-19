@@ -11,6 +11,11 @@ type Incident = {
   happened: string
 }
 
+type Stats = {
+  columns: string[]
+  rows: string[][]
+}
+
 type Step = {
   id: string
   kind: "thinking" | "tool"
@@ -23,6 +28,7 @@ type Message = {
   text: string
   steps: Step[]
   incidents: Incident[]
+  stats: Stats | null
   note: string
   pending: boolean
 }
@@ -39,6 +45,7 @@ const emptyAssistant = (): Message => ({
   text: "",
   steps: [],
   incidents: [],
+  stats: null,
   note: "",
   pending: true,
 })
@@ -144,6 +151,7 @@ const Demo = () => {
         text: pregunta,
         steps: [],
         incidents: [],
+        stats: null,
         note: "",
         pending: false,
       },
@@ -177,6 +185,7 @@ const Demo = () => {
             text?: string
             status?: string
             note?: string
+            stats?: Stats | null
             incidents?: Incident[]
           }
           if (event.type === "thread" && event.thread_id) {
@@ -230,6 +239,7 @@ const Demo = () => {
                 step.kind === "thinking" ? { ...step, active: false } : step,
               ),
               note: event.note ?? "",
+              stats: event.stats ?? null,
               incidents: event.incidents ?? [],
               pending: false,
             }))
@@ -288,6 +298,42 @@ const Demo = () => {
                     <p className="mb-3 text-[15px] leading-6 text-[#0d0d0d]">
                       {message.note}
                     </p>
+                  )}
+                  {message.stats && (
+                    <div className="mb-3 overflow-x-auto rounded-2xl border border-zinc-200 bg-white shadow-sm">
+                      <table className="w-full border-collapse text-left text-sm">
+                        <thead className="bg-zinc-50 text-xs uppercase tracking-wide text-zinc-500">
+                          <tr>
+                            {message.stats.columns.map((column, index) => (
+                              <th
+                                key={index}
+                                className={`px-4 py-3 font-medium ${index > 0 ? "text-right" : ""}`}
+                              >
+                                {column}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {message.stats.rows.map((row, rowIndex) => (
+                            <tr key={rowIndex} className="border-t border-zinc-100">
+                              {row.map((cell, index) => (
+                                <td
+                                  key={index}
+                                  className={
+                                    index > 0
+                                      ? "px-4 py-2.5 text-right tabular-nums text-zinc-700"
+                                      : "px-4 py-2.5 font-medium text-zinc-900"
+                                  }
+                                >
+                                  {cell}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   )}
                   {message.incidents.length > 0 && (
                     <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm">

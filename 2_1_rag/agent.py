@@ -15,22 +15,34 @@ load_dotenv(ROOT / ".env")
 if not os.environ.get("ANTHROPIC_API_KEY"):
     raise RuntimeError("Falta ANTHROPIC_API_KEY en el entorno o en el fichero .env")
 
-from tools import buscar_descripciones
+from tools import TOOLS
 
-SYSTEM_PROMPT = """Eres un agente de consulta sobre accidentes de tráfico atendidos en Madrid.
-La única fuente válida son los informes recuperados con buscar_descripciones.
+TOOL_NAMES = {tool.__name__ for tool in TOOLS}
 
-Llama a buscar_descripciones antes de responder.
-Cada informe trae la fila completa del parte: lugar, vehículos, heridos, gravedad y descripción.
-Si la pregunta fija un distrito, una carretera, unas fechas o la gravedad, pásalo como filtro
-de la herramienta: el filtro es exacto y el parecido del texto no.
-«Grave» significa heridos graves o víctimas mortales (campo grave), no lo que diga la descripción.
-No calcules totales ni medias: la herramienta encuentra informes parecidos, no cuenta filas.
-Incluye solo incidentes que respondan a la pregunta.
+SYSTEM_PROMPT = """Eres un agente de consulta sobre accidentes de tráfico atendidos en Madrid en 2024.
+La única fuente válida es lo que devuelven tus herramientas. Llama al menos a una antes de responder.
+
+Qué herramienta usar:
+- contar_partes: cuántos, totales, comparaciones y rankings. Es exacta, sobre todas las filas.
+- listar_partes: «todos los partes que…» y búsquedas de un nombre o palabra literal en la descripción.
+- buscar_descripciones: qué ocurrió o cómo, por parecido de significado. Devuelve solo unos pocos partes.
+
+Reglas:
+- Toda cifra sale de contar_partes. No cuentes a mano los partes de las otras herramientas.
+  Puedes calcular porcentajes o medias a partir de las cifras de contar_partes.
+- Si la pregunta fija un distrito, una carretera, unas fechas o la gravedad, pásalo en filtros:
+  el filtro es exacto y el parecido del texto no.
+- «Grave» significa heridos graves o víctimas mortales (campo grave), no lo que diga la descripción.
+- Para un nombre propio (hospital, calle) usa texto_contiene con sus variantes de escritura.
+- Incluye solo incidentes que respondan a la pregunta.
 
 Tu mensaje final es únicamente este JSON, sin markdown:
 {
-  "note": "una frase si hace falta aclarar algo, si no cadena vacía",
+  "note": "la respuesta en una o dos frases, con la cifra si la pregunta pide una; cadena vacía si la tabla basta",
+  "stats": {
+    "columns": ["nombre de cada columna"],
+    "rows": [["una fila por grupo, con un valor por columna"]]
+  },
   "incidents": [
     {
       "incident": "numero_incidencia",
@@ -39,7 +51,9 @@ Tu mensaje final es únicamente este JSON, sin markdown:
       "happened": "qué ocurrió, en una o dos frases"
     }
   ]
-}"""
+}
+stats es la tabla de cifras de un desglose; pon null si no hay desglose.
+incidents es la lista de partes concretos; pon [] si la pregunta solo pide cifras."""
 
 agent = create_deep_agent(
     model=ChatAnthropic(
@@ -48,7 +62,7 @@ agent = create_deep_agent(
         effort="medium",
         max_tokens=16000,
     ),
-    tools=[buscar_descripciones],
+    tools=TOOLS,
     system_prompt=SYSTEM_PROMPT,
     checkpointer=MemorySaver(),
 )
@@ -79,6 +93,22 @@ def _parts(content: object):
                 yield ("text", piece)
 
 
+def parse_stats(raw: object) -> dict | None:
+    """Tabla de cifras: columnas y filas de texto, todas con el mismo ancho."""
+    if not isinstance(raw, dict):
+        return None
+    columns = [str(name) for name in raw.get("columns") or []]
+    rows = []
+    for row in raw.get("rows") or []:
+        if not isinstance(row, list):
+            continue
+        cells = ["" if cell is None else str(cell) for cell in row][: len(columns)]
+        rows.append(cells + [""] * (len(columns) - len(cells)))
+    if not columns or not rows:
+        return None
+    return {"columns": columns, "rows": rows}
+
+
 def parse_answer(raw: str) -> dict:
     text = raw.strip()
     if text.startswith("```"):
@@ -86,11 +116,11 @@ def parse_answer(raw: str) -> dict:
     start = text.find("{")
     end = text.rfind("}")
     if start < 0 or end <= start:
-        return {"note": text, "incidents": []}
+        return {"note": text, "stats": None, "incidents": []}
     try:
         data = json.loads(text[start : end + 1])
     except json.JSONDecodeError:
-        return {"note": text, "incidents": []}
+        return {"note": text, "stats": None, "incidents": []}
     incidents = []
     for row in data.get("incidents") or []:
         if not isinstance(row, dict):
@@ -103,7 +133,11 @@ def parse_answer(raw: str) -> dict:
                 "happened": str(row.get("happened") or ""),
             }
         )
-    return {"note": str(data.get("note") or ""), "incidents": incidents}
+    return {
+        "note": str(data.get("note") or ""),
+        "stats": parse_stats(data.get("stats")),
+        "incidents": incidents,
+    }
 
 
 async def stream_turn(pregunta: str, thread_id: str) -> AsyncIterator[dict]:
@@ -117,10 +151,10 @@ async def stream_turn(pregunta: str, thread_id: str) -> AsyncIterator[dict]:
     ):
         name = event.get("event")
         tool_name = event.get("name")
-        if name == "on_tool_start" and tool_name == "buscar_descripciones":
-            yield {"type": "tool", "status": "start"}
-        elif name == "on_tool_end" and tool_name == "buscar_descripciones":
-            yield {"type": "tool", "status": "end"}
+        if name == "on_tool_start" and tool_name in TOOL_NAMES:
+            yield {"type": "tool", "status": "start", "name": tool_name}
+        elif name == "on_tool_end" and tool_name in TOOL_NAMES:
+            yield {"type": "tool", "status": "end", "name": tool_name}
         elif name == "on_chat_model_stream":
             chunk = event.get("data", {}).get("chunk")
             for kind, piece in _parts(getattr(chunk, "content", None)):

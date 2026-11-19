@@ -90,7 +90,7 @@ Agrupa los 21 distritos de Madrid según su perfil de riesgo y su contexto socia
 
 ## Caso 2.1 — Agente RAG
 
-Consulta los informes de accidentes. No cuenta filas ni calcula medias: busca los partes que se parecen a la pregunta, los acota con filtros exactos sobre sus campos y responde solo con lo que ha recuperado.
+Consulta los informes de accidentes con tres herramientas: una busca los partes que se parecen a la pregunta, otra cuenta de forma exacta y otra lista todos los que cumplen unas condiciones. Las tres admiten los mismos filtros sobre los campos del parte. El agente responde solo con lo que devuelven.
 
 ### Datos
 
@@ -108,15 +108,27 @@ Cada parte es un solo vector. No se trocean: un informe cabe entero en el modelo
 - La pregunta lleva la instrucción de búsqueda del modelo. Los documentos se codifican sin esa instrucción.
 - Los vectores están en Pinecone serverless (`aws`, `eu-west-1`), en el índice `accidentes-descripcion`.
 - `embeddings.py` sube el índice una vez. Si ya hay vectores, no lo repite. `--force` lo rehace: el id de cada vector es el número de incidencia, así que cada parte sustituye al anterior.
-- `tools.py` expone `buscar_descripciones`, que devuelve los partes más parecidos con la fila completa. Admite filtros exactos: distrito, carretera, tipo de accidente, tipo de colisión, ubicación, tipo de vía, firme, circulación, rango de fechas, solo graves, con heridos, con motos y con pesados. Los valores se comparan sin mayúsculas ni tildes; si uno no existe, la herramienta devuelve la lista válida.
+- `tools.py` expone `buscar_descripciones`, que devuelve los partes más parecidos con la fila completa.
+
+### Herramientas
+
+`tools.py` define tres herramientas. Comparten el objeto `filtros`: distrito, carretera, tipo de accidente, tipo de colisión, ubicación, tipo de vía, firme, circulación, rango de fechas, solo graves, con heridos, con víctimas mortales, con motos y con pesados. Los valores se comparan sin mayúsculas ni tildes; si uno no existe, la herramienta devuelve la lista válida.
+
+- `buscar_descripciones(pregunta, k, filtros)`: búsqueda por significado en Pinecone. Devuelve como mucho 20 partes, así que no sirve para contar.
+- `contar_partes(filtros, texto_contiene, agrupar_por)`: recuento exacto con pandas sobre `accidentes_clean.csv`. Devuelve el número de partes y la suma de heridos leves, heridos graves, víctimas mortales y partes graves, con desglose opcional por un campo, por mes, por día de la semana o por hora.
+- `listar_partes(filtros, texto_contiene, limite, recientes_primero)`: todos los partes que cumplen las condiciones, ordenados por fecha, hasta 50.
+
+`texto_contiene` busca palabras o frases literales en la descripción, sin distinguir mayúsculas ni tildes. Sirve para nombres propios (un hospital, una calle), que los embeddings encuentran mal. Admite varias variantes de escritura y basta con que aparezca una.
+
+Las dos herramientas exactas leen el CSV y no Pinecone: un total solo es fiable sobre todas las filas, y la búsqueda por parecido devuelve unas pocas.
 
 
 
 ### Agente
 
-`agent.py` usa Deep Agents (`create_deep_agent`) con Claude Opus 5.5. El grafo compilado es `__start__ → PatchToolCalls → model ⇄ tools → __end__`; la única herramienta de consulta es `buscar_descripciones` (Deep Agents añade además sus herramientas de ficheros y `task`, que este caso no usa). `MemorySaver` guarda el historial por `thread_id`. La respuesta final es un JSON con una nota y los incidentes (número, distrito, fecha y qué ocurrió). `diagrama_agente.py` dibuja el grafo en `figuras/agente_langgraph.png`.
+`agent.py` usa Deep Agents (`create_deep_agent`) con Claude Opus 5.5. El grafo compilado es `__start__ → PatchToolCalls → model ⇄ tools → __end__`; las herramientas de consulta son `buscar_descripciones`, `contar_partes` y `listar_partes` (Deep Agents añade además sus herramientas de ficheros y `task`, que este caso no usa). `MemorySaver` guarda el historial por `thread_id`. El prompt obliga a sacar toda cifra de `contar_partes`. La respuesta final es un JSON con una nota, una tabla de cifras opcional (`stats`, con columnas y filas) y los incidentes (número, distrito, fecha y qué ocurrió). `diagrama_agente.py` dibuja el grafo en `figuras/agente_langgraph.png`.
 
-`api.py` publica ese turno en `POST /chat` con FastAPI, en streaming. El frontend de `2_1_rag/frontend` muestra la cadena de pensamiento, la llamada a la herramienta y la tabla.
+`api.py` publica ese turno en `POST /chat` con FastAPI, en streaming. El frontend de `2_1_rag/frontend` muestra la cadena de pensamiento, las llamadas a herramientas, la tabla de cifras y la tabla de incidentes.
 
 ### Cómo ejecutarlo
 

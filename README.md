@@ -90,25 +90,25 @@ Agrupa los 21 distritos de Madrid según su perfil de riesgo y su contexto socia
 
 ## Caso 2.1 — Agente RAG
 
-Consulta los informes de accidentes. No cuenta filas ni calcula medias: busca los informes cuya descripción se parece a la pregunta y responde solo con lo que ha recuperado.
+Consulta los informes de accidentes. No cuenta filas ni calcula medias: busca los partes que se parecen a la pregunta, los acota con filtros exactos sobre sus campos y responde solo con lo que ha recuperado.
 
 ### Datos
 
-El índice parte de `data_clean/accidentes_clean.csv`, la limpieza común descrita arriba. Se indexan las 1860 descripciones no vacías; los 102 partes sin texto (1 grave) quedan fuera.
+El índice parte de `data_clean/accidentes_clean.csv`, la limpieza común descrita arriba. Se indexan las 1962 filas, una por parte. Los 102 partes sin descripción (1 grave) entran con el resumen de sus campos y el texto «Sin descripción».
 
 `2_1_rag/pipeline.py` fue la primera limpieza del caso. Hoy solo se usa su función `infer_tipo_colision`, que rellena los `tipo_colision` vacíos: Claude Sonnet 4.6, a temperatura 0, recibe lotes de 15 partes (`numero_incidencia`, `tipo_accidente` y `descripcion`) y devuelve una de cinco etiquetas (alcance, lateral, frontal, mediana u Otro). El resultado se guarda en `.cache/tipo_colision.json`. Falta validar esas etiquetas con una muestra revisada a mano.
 
-Los metadatos de cada vector son `numero_incidencia`, `distrito` y `fecha`. Falta añadir `grave` y `tipo_colision`: «accidente grave» en el texto no equivale a `grave = 1` (54 partes lo escriben con `grave = 0`), así que esa pregunta debe filtrarse por metadato.
+Cada vector lleva como metadatos la fila completa, con su tipo: los textos (`fecha`, `hora`, `localizacion`, `carretera`, `distrito`, `tipo_accidente`, `tipo_colision`…), los recuentos como enteros (vehículos, motos, pesados, heridos, víctimas mortales, `unidad_samur_id`) y las banderas `grave`, `tipo_colision_inferido`, `fuera_de_madrid` y `tiene_descripcion`. Los campos vacíos se omiten, porque Pinecone no admite nulos. `fecha_num` repite la fecha como entero `AAAAMMDD` para filtrar por rango. `fecha_calendario` no se sube: es igual a `fecha`. «Accidente grave» en el texto no equivale a `grave = 1` (54 partes lo escriben con `grave = 0`), así que esa pregunta se filtra por metadato.
 
 ### Arquitectura de embeddings
 
-Cada descripción no vacía es un solo vector. No se trocean: un informe cabe entero en el modelo.
+Cada parte es un solo vector. No se trocean: un informe cabe entero en el modelo. El texto que se codifica es un resumen de los campos con significado (tipo de accidente y de colisión, carretera, tipo de vía, túnel o superficie, distrito, vehículos, firme, circulación y heridos) seguido de la descripción. Los códigos y números sin significado para el modelo (`localizacion`, `eje`, `hora`, `unidad_samur_id`) van solo en los metadatos.
 
 - Modelo local `Qwen/Qwen3-Embedding-0.6B`: 1024 dimensiones y similitud coseno.
 - La pregunta lleva la instrucción de búsqueda del modelo. Los documentos se codifican sin esa instrucción.
 - Los vectores están en Pinecone serverless (`aws`, `eu-west-1`), en el índice `accidentes-descripcion`.
-- `embeddings.py` sube el índice una vez. Si ya hay vectores, no lo repite. `--force` lo rehace.
-- `tools.py` expone `buscar_descripciones`, que devuelve los informes más parecidos con su número, distrito y fecha.
+- `embeddings.py` sube el índice una vez. Si ya hay vectores, no lo repite. `--force` lo rehace: el id de cada vector es el número de incidencia, así que cada parte sustituye al anterior.
+- `tools.py` expone `buscar_descripciones`, que devuelve los partes más parecidos con la fila completa. Admite filtros exactos: distrito, carretera, tipo de accidente, tipo de colisión, ubicación, tipo de vía, firme, circulación, rango de fechas, solo graves, con heridos, con motos y con pesados. Los valores se comparan sin mayúsculas ni tildes; si uno no existe, la herramienta devuelve la lista válida.
 
 
 

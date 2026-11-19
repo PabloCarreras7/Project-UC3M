@@ -21,6 +21,10 @@ SYSTEM_PROMPT = """Eres un agente de consulta sobre accidentes de tráfico atend
 La única fuente válida son los informes recuperados con buscar_descripciones.
 
 Llama a buscar_descripciones antes de responder.
+Cada informe trae la fila completa del parte: lugar, vehículos, heridos, gravedad y descripción.
+Si la pregunta fija un distrito, una carretera, unas fechas o la gravedad, pásalo como filtro
+de la herramienta: el filtro es exacto y el parecido del texto no.
+«Grave» significa heridos graves o víctimas mortales (campo grave), no lo que diga la descripción.
 No calcules totales ni medias: la herramienta encuentra informes parecidos, no cuenta filas.
 Incluye solo incidentes que respondan a la pregunta.
 
